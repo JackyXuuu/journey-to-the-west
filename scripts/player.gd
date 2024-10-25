@@ -1,11 +1,16 @@
 extends CharacterBody2D
 
-@export var speed = 200
-@export var jump_force = 400
+@export var speed = 150
+@export var jump_force = 250
 var v = Vector2.ZERO
 var gravity = 800
+var screen_size
+
+func _ready():
+	screen_size = get_viewport_rect().size
 
 func _physics_process(delta):
+	
 	if not is_on_floor():
 		velocity.y += gravity * delta
 	
