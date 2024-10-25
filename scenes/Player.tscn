@@ -1,44 +1,143 @@
-[gd_scene load_steps=8 format=3 uid="uid://c8ppw67pqbx3t"]
+[gd_scene load_steps=25 format=3 uid="uid://c8ppw67pqbx3t"]
 
-[ext_resource type="Texture2D" uid="uid://branr6dw0plaw" path="res://assets/sprites/wukong16bit/stand_sprite_1.png" id="1_53nxq"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_trmis"]
-[ext_resource type="Texture2D" uid="uid://cn8kcecekegn8" path="res://assets/sprites/wukong16bit/stand_sprite_2.png" id="2_mhhqn"]
-[ext_resource type="Texture2D" uid="uid://b3yk5l2igtfth" path="res://assets/sprites/wukong16bit/stand_sprite_3.png" id="3_3qqwu"]
-[ext_resource type="Texture2D" uid="uid://dwp4sheq211vs" path="res://assets/sprites/wukong16bit/stand_sprite_4.png" id="4_lu0ku"]
+[ext_resource type="Texture2D" uid="uid://5auvyc1uom6t" path="res://assets/sprites/wukong16bit/atk wk 2_sprite_1.png" id="2_e8vyv"]
+[ext_resource type="Texture2D" uid="uid://dp6qdlmb4e6si" path="res://assets/sprites/wukong16bit/atk wk_sprite_1.png" id="2_ujh11"]
+[ext_resource type="Texture2D" uid="uid://c1rxt08jhg8m8" path="res://assets/sprites/wukong16bit/atk wk_sprite_2.png" id="3_b0eab"]
+[ext_resource type="Texture2D" uid="uid://c2arin4i2yuoc" path="res://assets/sprites/wukong16bit/atk wk 2_sprite_2.png" id="3_mjxeb"]
+[ext_resource type="Texture2D" uid="uid://b3s4bs00qv5d7" path="res://assets/sprites/wukong16bit/atk wk_sprite_3.png" id="4_byqrx"]
+[ext_resource type="Texture2D" uid="uid://c8ti1mivk8lvv" path="res://assets/sprites/wukong16bit/atk wk 2_sprite_3.png" id="4_jbvv3"]
+[ext_resource type="Texture2D" uid="uid://b22o3krpgym42" path="res://assets/sprites/wukong16bit/atk wk_sprite_4.png" id="5_us3uw"]
+[ext_resource type="Texture2D" uid="uid://by3p5y0v0ffxv" path="res://assets/sprites/wukong16bit/atk wk 2_sprite_4.png" id="5_ycdx5"]
+[ext_resource type="Texture2D" uid="uid://d2he1gk5gfk5g" path="res://assets/sprites/wukong16bit/stand wk_sprite_1.png" id="6_jx0bg"]
+[ext_resource type="Texture2D" uid="uid://csp4dimu0nkrw" path="res://assets/sprites/wukong16bit/stand wk_sprite_2.png" id="7_g18cb"]
+[ext_resource type="Texture2D" uid="uid://d0sekduo5ycq3" path="res://assets/sprites/wukong16bit/stand wk_sprite_3.png" id="8_hb1n6"]
+[ext_resource type="Texture2D" uid="uid://pm24o1a4vxie" path="res://assets/sprites/wukong16bit/stand wk_sprite_4.png" id="9_tcqgk"]
+[ext_resource type="Texture2D" uid="uid://b046ksmsq8trw" path="res://assets/sprites/wukong16bit/jumpwk_sprite_1.png" id="14_jarhf"]
+[ext_resource type="Texture2D" uid="uid://dixdfk0td4xov" path="res://assets/sprites/wukong16bit/jumpwk_sprite_2.png" id="15_ilnf5"]
+[ext_resource type="Texture2D" uid="uid://clyjgkak8t7x4" path="res://assets/sprites/wukong16bit/jumpwk_sprite_3.png" id="16_wl01h"]
+[ext_resource type="Texture2D" uid="uid://ctq55jbqkqulh" path="res://assets/sprites/wukong16bit/jumpwk_sprite_4.png" id="17_op4fn"]
+[ext_resource type="Texture2D" uid="uid://ctkpxlkc1emv1" path="res://assets/sprites/wukong16bit/run wk_sprite_1.png" id="18_ns45b"]
+[ext_resource type="Texture2D" uid="uid://uxbi6ergcatt" path="res://assets/sprites/wukong16bit/run wk_sprite_2.png" id="19_yh8jm"]
+[ext_resource type="Texture2D" uid="uid://brgb8hpir63cc" path="res://assets/sprites/wukong16bit/run wk_sprite_3.png" id="20_juxop"]
+[ext_resource type="Texture2D" uid="uid://83uyo8ygqga1" path="res://assets/sprites/wukong16bit/run wk_sprite_4.png" id="21_pie4x"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_58t4p"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_53nxq")
+"texture": ExtResource("4_byqrx")
 }, {
 "duration": 1.0,
-"texture": ExtResource("2_mhhqn")
+"texture": ExtResource("2_ujh11")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_3qqwu")
+"texture": ExtResource("3_b0eab")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_lu0ku")
+"texture": ExtResource("5_us3uw")
+}],
+"loop": false,
+"name": &"attack0",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_e8vyv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_mjxeb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_jbvv3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_ycdx5")
+}],
+"loop": false,
+"name": &"attack1",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_jx0bg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_g18cb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_hb1n6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_tcqgk")
 }],
 "loop": true,
 "name": &"idle",
 "speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("14_jarhf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_ilnf5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_wl01h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_op4fn")
+}],
+"loop": false,
+"name": &"jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("18_ns45b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_yh8jm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_juxop")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_pie4x")
+}],
+"loop": true,
+"name": &"run",
+"speed": 5.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ym836"]
-height = 22.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_41re4"]
+size = Vector2(13.875, 18)
 
-[node name="Player" type="CharacterBody2D"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ym836"]
+radius = 12.0
+
+[node name="Wukong" type="CharacterBody2D"]
+position = Vector2(-1, 0)
 script = ExtResource("1_trmis")
 metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_58t4p")
-animation = &"idle"
+animation = &"run"
 autoplay = "idle"
-frame_progress = 0.910926
+
+[node name="StaffHit" type="Area2D" parent="AnimatedSprite2D"]
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/StaffHit"]
+position = Vector2(17, 0)
+shape = SubResource("RectangleShape2D_41re4")
+disabled = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 1)
+position = Vector2(-1, 0)
 shape = SubResource("CapsuleShape2D_ym836")
+
+[connection signal="animation_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_changed"]
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="area_entered" from="AnimatedSprite2D/StaffHit" to="." method="_on_staff_hit_area_entered"]

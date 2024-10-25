@@ -1,15 +1,16 @@
-[gd_scene load_steps=6 format=3 uid="uid://kbb3xft244ul"]
+[gd_scene load_steps=5 format=4 uid="uid://kbb3xft244ul"]
 
-[ext_resource type="PackedScene" uid="uid://c8ppw67pqbx3t" path="res://scenes/Player.tscn" id="1_e8bka"]
-[ext_resource type="Texture2D" uid="uid://b8wpe2ty1bb4y" path="res://assets/sprites/world_tileset.png" id="2_r318w"]
-
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_y8kwj"]
+[ext_resource type="PackedScene" uid="uid://c8ppw67pqbx3t" path="res://scenes/Player.tscn" id="1_rhdyi"]
+[ext_resource type="Texture2D" uid="uid://b8wpe2ty1bb4y" path="res://assets/sprites/world_tileset.png" id="2_n0d85"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rrnrn"]
-texture = ExtResource("2_r318w")
+texture = ExtResource("2_n0d85")
 0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 3:0/0 = 0
 4:0/0 = 0
 5:0/0 = 0
@@ -136,23 +137,28 @@ texture = ExtResource("2_r318w")
 3:15/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_3xxd2"]
+physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_rrnrn")
 
-[node name="Game" type="Node2D"]
+[node name="TestLevel" type="Node2D"]
 position = Vector2(3, 0)
 metadata/_edit_group_ = true
 
-[node name="Player" parent="." instance=ExtResource("1_e8bka")]
+[node name="Player" parent="." instance=ExtResource("1_rhdyi")]
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(0, 61)
-shape = SubResource("WorldBoundaryShape2D_y8kwj")
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Player"]
+remote_path = NodePath("../../Camera2D")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(-1, 0)
+offset = Vector2(50, 0)
 zoom = Vector2(4, 4)
+process_callback = 0
+position_smoothing_enabled = true
 
-[node name="TileMap" type="TileMap" parent="."]
+[node name="TileMap" type="Node" parent="."]
+
+[node name="Layer0" type="TileMapLayer" parent="TileMap"]
+use_parent_material = true
+tile_map_data = PackedByteArray("AAD6/wQAAAAAAAAAAAD7/wQAAAAAAAAAAAD8/wQAAAAAAAAAAAD+/wQAAAAAAAAAAAD9/wQAAAAAAAAAAAD//wQAAAAAAAAAAAAAAAQAAAAAAAAAAAABAAQAAAAAAAAAAAADAAQAAAAAAAAAAAACAAQAAAAAAAAAAAAEAAQAAAAAAAAAAAAFAAQAAAAAAAAAAAAGAAQAAAAAAAAAAAAHAAQAAAAAAAAAAAD5/wQAAAAAAAAAAAD4/wQAAAAAAAAAAAAIAAQAAAAAAAAAAAAJAAQAAAAAAAAAAAA=")
 tile_set = SubResource("TileSet_3xxd2")
-format = 2
