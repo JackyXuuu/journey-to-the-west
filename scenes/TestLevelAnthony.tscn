@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://scripts/TestLevel.gd" id="1_5bhls"]
 [ext_resource type="PackedScene" uid="uid://rcqurxcu2061" path="res://scenes/Player.tscn" id="1_r6qel"]
-[ext_resource type="Texture2D" uid="uid://b8wpe2ty1bb4y" path="res://assets/sprites/wukong16bit/world_tileset.png" id="2_c386q"]
-[ext_resource type="PackedScene" uid="uid://d0sxlok03prqf" path="res://scenes/Enemy.tscn" id="2_no1cm"]
+[ext_resource type="Texture2D" uid="uid://b8wpe2ty1bb4y" path="res://assets/sprites/world_tileset.png" id="2_c386q"]
+[ext_resource type="PackedScene" uid="uid://d0sxlok03prqf" path="res://scenes/Mob.tscn" id="2_no1cm"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rrnrn"]
 texture = ExtResource("2_c386q")
@@ -167,7 +167,6 @@ one_shot = true
 
 [node name="MobTimer" type="Timer" parent="."]
 wait_time = 0.5
-one_shot = true
 
 [node name="MobSpawnLocation" type="Marker2D" parent="."]
 position = Vector2(123.49, 52.4621)
