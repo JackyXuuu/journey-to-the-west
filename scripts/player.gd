@@ -12,7 +12,7 @@ var input_dir
 var is_controllable := true # if player is currently controllable
 @onready var animated_sprite : AnimatedSprite2D = $AnimatedSprite2D
 @onready var camera: Camera2D = $Camera2D  # Adjust the node path to match your scene
-
+@onready var weapon: CollisionShape2D = $AnimatedSprite2D/StaffHit/CollisionShape2D
 
 func _ready():
 	screen_size = get_viewport_rect().size
@@ -67,7 +67,9 @@ func _on_camera_mode_changed(camera_mode: bool):
 	
 func attack():
 	print("attack")
+	weapon.disabled = false
 	set_player_state(States.ATTACK)	
+	
 	
 func jump():
 	velocity.y = -jump_force
@@ -75,6 +77,7 @@ func jump():
 
 func _on_animated_sprite_2d_animation_finished() -> void:
 	if state == States.ATTACK:
+		weapon.disabled = true
 		set_player_state(States.IDLE)
 
 func update_animation():
@@ -88,3 +91,8 @@ func update_direction_facing():
 		animated_sprite.flip_h = true
 	elif input_dir > 0:
 		animated_sprite.flip_h = false
+
+func start(pos):
+	position = pos
+	show()
+	$CollisionShape2D.disabled = false

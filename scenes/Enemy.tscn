@@ -1,0 +1,82 @@
+[gd_scene load_steps=13 format=3 uid="uid://d0sxlok03prqf"]
+
+[ext_resource type="Texture2D" uid="uid://branr6dw0plaw" path="res://assets/sprites/wukong16bit/stand_sprite_1.png" id="1_5jio1"]
+[ext_resource type="Script" path="res://scripts/enemy.gd" id="1_vmc7d"]
+[ext_resource type="Texture2D" uid="uid://cn8kcecekegn8" path="res://assets/sprites/wukong16bit/stand_sprite_2.png" id="2_xexwa"]
+[ext_resource type="Texture2D" uid="uid://b3yk5l2igtfth" path="res://assets/sprites/wukong16bit/stand_sprite_3.png" id="3_alliq"]
+[ext_resource type="Texture2D" uid="uid://dwp4sheq211vs" path="res://assets/sprites/wukong16bit/stand_sprite_4.png" id="4_7grag"]
+[ext_resource type="Texture2D" uid="uid://c755ofcsu4y0m" path="res://assets/sprites/wukong16bit/run_sprite_1.png" id="6_7op8m"]
+[ext_resource type="Texture2D" uid="uid://dqc6mg16tnsmj" path="res://assets/sprites/wukong16bit/run_sprite_2.png" id="7_3nkj5"]
+[ext_resource type="Texture2D" uid="uid://b505b34yq6vcj" path="res://assets/sprites/wukong16bit/run_sprite_3.png" id="8_h5i16"]
+[ext_resource type="Texture2D" uid="uid://hon4gc37kbnp" path="res://assets/sprites/wukong16bit/run_sprite_4.png" id="9_6t7kk"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_od5dt"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_5jio1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_xexwa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_alliq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_7grag")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_7op8m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_3nkj5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_h5i16")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_6t7kk")
+}],
+"loop": true,
+"name": &"run",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jkf1a"]
+radius = 7.0
+height = 26.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3ef2s"]
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+collision_layer = 4
+script = ExtResource("1_vmc7d")
+metadata/_edit_group_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_od5dt")
+animation = &"run"
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_jkf1a")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[node name="RayCastRight" type="RayCast2D" parent="."]
+
+[node name="RayCastLeft" type="RayCast2D" parent="."]
+
+[node name="Hurtbox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+shape = SubResource("CapsuleShape2D_3ef2s")
+
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
