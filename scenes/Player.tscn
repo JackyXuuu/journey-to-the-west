@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://c8ppw67pqbx3t"]
+[gd_scene load_steps=26 format=3 uid="uid://c8ppw67pqbx3t"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_trmis"]
 [ext_resource type="Texture2D" uid="uid://5auvyc1uom6t" path="res://assets/sprites/wukong16bit/atk wk 2_sprite_1.png" id="2_e8vyv"]
@@ -21,6 +21,7 @@
 [ext_resource type="Texture2D" uid="uid://uxbi6ergcatt" path="res://assets/sprites/wukong16bit/run wk_sprite_2.png" id="19_yh8jm"]
 [ext_resource type="Texture2D" uid="uid://brgb8hpir63cc" path="res://assets/sprites/wukong16bit/run wk_sprite_3.png" id="20_juxop"]
 [ext_resource type="Texture2D" uid="uid://83uyo8ygqga1" path="res://assets/sprites/wukong16bit/run wk_sprite_4.png" id="21_pie4x"]
+[ext_resource type="Script" path="res://scenes/staff_hit.gd" id="22_ddqhi"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_58t4p"]
 animations = [{
@@ -111,7 +112,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_41re4"]
-size = Vector2(13.875, 18)
+size = Vector2(17.9375, 23)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ym836"]
 radius = 12.0
@@ -127,12 +128,13 @@ animation = &"run"
 autoplay = "idle"
 
 [node name="StaffHit" type="Area2D" parent="AnimatedSprite2D"]
+script = ExtResource("22_ddqhi")
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/StaffHit"]
-position = Vector2(17, 0)
+position = Vector2(19, 1)
+scale = Vector2(1.08082, 1.24546)
 shape = SubResource("RectangleShape2D_41re4")
-disabled = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1, 0)
@@ -140,4 +142,4 @@ shape = SubResource("CapsuleShape2D_ym836")
 
 [connection signal="animation_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_changed"]
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
-[connection signal="area_entered" from="AnimatedSprite2D/StaffHit" to="." method="_on_staff_hit_area_entered"]
+[connection signal="body_entered" from="AnimatedSprite2D/StaffHit" to="AnimatedSprite2D/StaffHit" method="_on_body_entered"]

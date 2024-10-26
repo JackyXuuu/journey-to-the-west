@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=4 uid="uid://kbb3xft244ul"]
+[gd_scene load_steps=6 format=4 uid="uid://kbb3xft244ul"]
 
 [ext_resource type="PackedScene" uid="uid://c8ppw67pqbx3t" path="res://scenes/Player.tscn" id="1_rhdyi"]
 [ext_resource type="Texture2D" uid="uid://b8wpe2ty1bb4y" path="res://assets/sprites/world_tileset.png" id="2_n0d85"]
@@ -140,6 +140,9 @@ texture = ExtResource("2_n0d85")
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_rrnrn")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l7j8p"]
+size = Vector2(40, 32)
+
 [node name="TestLevel" type="Node2D"]
 position = Vector2(3, 0)
 metadata/_edit_group_ = true
@@ -160,5 +163,14 @@ position_smoothing_enabled = true
 
 [node name="Layer0" type="TileMapLayer" parent="TileMap"]
 use_parent_material = true
-tile_map_data = PackedByteArray("AAD6/wQAAAAAAAAAAAD7/wQAAAAAAAAAAAD8/wQAAAAAAAAAAAD+/wQAAAAAAAAAAAD9/wQAAAAAAAAAAAD//wQAAAAAAAAAAAAAAAQAAAAAAAAAAAABAAQAAAAAAAAAAAADAAQAAAAAAAAAAAACAAQAAAAAAAAAAAAEAAQAAAAAAAAAAAAFAAQAAAAAAAAAAAAGAAQAAAAAAAAAAAAHAAQAAAAAAAAAAAD5/wQAAAAAAAAAAAD4/wQAAAAAAAAAAAAIAAQAAAAAAAAAAAAJAAQAAAAAAAAAAAA=")
+tile_map_data = PackedByteArray("AAD6/wQAAAAAAAAAAAD7/wQAAAAAAAAAAAD8/wQAAAAAAAAAAAD+/wQAAAAAAAAAAAD9/wQAAAAAAAAAAAD//wQAAAAAAAAAAAAAAAQAAAAAAAAAAAABAAQAAAAAAAAAAAADAAQAAAAAAAAAAAACAAQAAAAAAAAAAAAEAAQAAAAAAAAAAAAFAAQAAAAAAAAAAAAGAAQAAAAAAAAAAAAHAAQAAAAAAAAAAAD5/wQAAAAAAAAAAAD4/wQAAAAAAAAAAAAIAAQAAAAAAAAAAAAJAAQAAAAAAAAAAAADAAMAAAAAAAAAAAAEAAMAAAAAAAAAAAD+/wMAAAAAAAAAAAA=")
 tile_set = SubResource("TileSet_3xxd2")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+position = Vector2(30, 53)
+scale = Vector2(0.888973, 2.09437)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(-1.90735e-06, 0.47747)
+scale = Vector2(0.64572, 0.325566)
+shape = SubResource("RectangleShape2D_l7j8p")

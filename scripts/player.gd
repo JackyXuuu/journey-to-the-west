@@ -58,11 +58,6 @@ func attack():
 func jump():
 	velocity.y = -jump_force
 	set_state(States.JUMPING)
-	
-func _on_staff_hit_area_entered(area: Area2D) -> void:
-	if area.is_in_group	("hurt"):
-		print("ouchie")
-	pass # Replace with function body.
 
 func _on_animated_sprite_2d_animation_finished() -> void:
 	if state == States.ATTACK:
@@ -79,6 +74,4 @@ func update_direction_facing():
 		animated_sprite.flip_h = true
 	elif input_dir > 0:
 		animated_sprite.flip_h = false
-		
-
-		
+	

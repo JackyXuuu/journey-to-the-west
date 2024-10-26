@@ -2,5 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/unit.gd" id="1_xslsr"]
 
-[node name="Unit" type="CharacterBody2D"]
+[node name="Mob" type="CharacterBody2D"]
 script = ExtResource("1_xslsr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
