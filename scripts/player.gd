@@ -2,27 +2,35 @@ extends CharacterBody2D
 
 @export var speed = 150
 @export var jump_force = 250
+
+enum States {IDLE, RUNNING, JUMPING, ATTACK}
+var state:States = States.IDLE
 var v = Vector2.ZERO
 var gravity = 800
 var screen_size
-enum States {IDLE, RUNNING, JUMPING, ATTACK}
-var state:States = States.IDLE	
 var input_dir
-@onready	 var animated_sprite : AnimatedSprite2D = $AnimatedSprite2D
+var is_controllable := true # if player is currently controllable
+@onready var animated_sprite : AnimatedSprite2D = $AnimatedSprite2D
+@onready var camera: Camera2D = $Camera2D  # Adjust the node path to match your scene
+
 
 func _ready():
 	screen_size = get_viewport_rect().size
+	# connects to camera when the mode changes
+	if camera:
+		camera.camera_mode_changed.connect(_on_camera_mode_changed)
 
 func _physics_process(delta):
+	if not is_controllable:
+		velocity.x = 0
+	else:
+		input_dir = Input.get_axis("move_left", "move_right")
+		velocity.x = input_dir * speed
 	
-	input_dir = Input.get_axis("move_left", "move_right")
-
 	if not is_on_floor():
 		velocity.y += gravity * delta
-
 	elif state == States.JUMPING:
-		set_state(States.IDLE)
-	velocity.x = input_dir * speed
+		set_player_state(States.IDLE)
 	
 	if is_on_floor() and Input.is_action_just_pressed("jump"):
 		jump()
@@ -35,7 +43,7 @@ func _unhandled_input(event):
 	if event.is_action_pressed("attack"):
 		attack()
 
-func set_state(new_state: int) -> void:
+func set_player_state(new_state: int) -> void:
 	var previous_state := state
 	state = new_state
 
@@ -50,28 +58,33 @@ func set_state(new_state: int) -> void:
 	elif state == States.RUNNING:
 		animated_sprite.play("run")
 
+# CAMERA SWITCHING
+func _on_camera_mode_changed(camera_mode: bool):
+	is_controllable = !camera_mode
+	if !is_controllable:
+		set_player_state(States.IDLE)
+
 	
 func attack():
 	print("attack")
-	set_state(States.ATTACK)	
+	set_player_state(States.ATTACK)	
 	
 func jump():
 	velocity.y = -jump_force
-	set_state(States.JUMPING)
+	set_player_state(States.JUMPING)
 
 func _on_animated_sprite_2d_animation_finished() -> void:
 	if state == States.ATTACK:
-		set_state(States.IDLE)
+		set_player_state(States.IDLE)
 
 func update_animation():
 	if input_dir != 0 and state == States.IDLE:
-		set_state(States.RUNNING)
+		set_player_state(States.RUNNING)
 	elif state == States.RUNNING and input_dir == 0:
-		set_state(States.IDLE)
+		set_player_state(States.IDLE)
 		
 func update_direction_facing():
 	if input_dir < 0:
 		animated_sprite.flip_h = true
 	elif input_dir > 0:
 		animated_sprite.flip_h = false
-	
