@@ -9,6 +9,7 @@ var v = Vector2.ZERO
 var gravity = 800
 var screen_size
 var input_dir
+var flipped := false
 var is_controllable := true # if player is currently controllable
 @onready var animated_sprite : AnimatedSprite2D = $AnimatedSprite2D
 @onready var camera: Camera2D = $Camera2D  # Adjust the node path to match your scene
@@ -87,12 +88,13 @@ func update_animation():
 		set_player_state(States.IDLE)
 		
 func update_direction_facing():
-	if input_dir < 0:
-		animated_sprite.flip_h = true
-	elif input_dir > 0:
-		animated_sprite.flip_h = false
-
+	if input_dir < 0 and !flipped:
+		flipped = true
+		scale.x *= -1 
+	elif input_dir > 0 and flipped:
+		flipped = false
+		scale.x*= -1 
+		
 func start(pos):
 	position = pos
 	show()
-	$CollisionShape2D.disabled = false

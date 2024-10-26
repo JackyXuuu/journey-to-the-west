@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://ydge52gon0gi"]
+[gd_scene load_steps=27 format=3 uid="uid://rcqurxcu2061"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_trmis"]
 [ext_resource type="Texture2D" uid="uid://dhqh0lk50ue32" path="res://assets/wukong16bit/atk wk 3_sprite_1.png" id="2_e6u0u"]
@@ -21,7 +21,6 @@
 [ext_resource type="Texture2D" uid="uid://uxbi6ergcatt" path="res://assets/sprites/wukong16bit/run wk_sprite_2.png" id="19_yh8jm"]
 [ext_resource type="Texture2D" uid="uid://brgb8hpir63cc" path="res://assets/sprites/wukong16bit/run wk_sprite_3.png" id="20_juxop"]
 [ext_resource type="Texture2D" uid="uid://83uyo8ygqga1" path="res://assets/sprites/wukong16bit/run wk_sprite_4.png" id="21_pie4x"]
-[ext_resource type="Script" path="res://scenes/staff_hit.gd" id="22_ddqhi"]
 [ext_resource type="Script" path="res://scripts/camera_controller.gd" id="23_yfkpm"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_58t4p"]
@@ -92,7 +91,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"jump",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -109,8 +108,26 @@ animations = [{
 }],
 "loop": true,
 "name": &"run",
-"speed": 5.0
+"speed": 10.0
 }]
+
+[sub_resource type="GDScript" id="GDScript_wqrrd"]
+script/source = "extends Area2D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+
+func _on_body_entered(body: Node2D) -> void:
+	print(body.name)
+	pass # Replace with function body.
+"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_41re4"]
 size = Vector2(9.89397, 17.8261)
@@ -118,33 +135,37 @@ size = Vector2(9.89397, 17.8261)
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ym836"]
 radius = 12.0
 
-[node name="Wukong" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D"]
 position = Vector2(-1, 0)
+collision_layer = 2
 script = ExtResource("1_trmis")
 metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(1, 0.990917)
 sprite_frames = SubResource("SpriteFrames_58t4p")
-animation = &"attack0"
+animation = &"idle"
 autoplay = "idle"
-frame = 3
-frame_progress = 1.0
 
 [node name="StaffHit" type="Area2D" parent="AnimatedSprite2D"]
-script = ExtResource("22_ddqhi")
+collision_layer = 8
+script = SubResource("GDScript_wqrrd")
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/StaffHit"]
 position = Vector2(14.6532, 4.81208e-07)
 scale = Vector2(1.08082, 1.24546)
 shape = SubResource("RectangleShape2D_41re4")
+disabled = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1, 0)
 shape = SubResource("CapsuleShape2D_ym836")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(5, 5)
+process_callback = 0
+limit_smoothed = true
 script = ExtResource("23_yfkpm")
 
 [connection signal="animation_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_changed"]

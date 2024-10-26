@@ -30,9 +30,9 @@ func set_camera_mode(enabled: bool):
 func handle_camera_movement(delta):
 	var direction = Vector2.ZERO
 	if Input.is_action_pressed("move_left"):
-		direction.x -= 1
+		direction.x = -1
 	if Input.is_action_pressed("move_right"):
-		direction.x += 1
+		direction.x = 1
 	
 	position += direction * CAMERA_SPEED * delta
 			
