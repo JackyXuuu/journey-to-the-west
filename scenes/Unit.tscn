@@ -1,0 +1,59 @@
+[gd_scene load_steps=11 format=3 uid="uid://do38oqp3j2a6v"]
+
+[ext_resource type="Script" path="res://scripts/unit.gd" id="1_yykpv"]
+[ext_resource type="Texture2D" uid="uid://dqwyo1e432joe" path="res://assets/wukong16bit/run wk_sprite_1.png" id="2_l1ce1"]
+[ext_resource type="Texture2D" uid="uid://bnk6gmk4bcx7f" path="res://assets/wukong16bit/stand wk_sprite_1.png" id="2_qa27d"]
+[ext_resource type="Texture2D" uid="uid://gg78qitqlr47" path="res://assets/wukong16bit/stand wk_sprite_2.png" id="3_h8f8b"]
+[ext_resource type="Texture2D" uid="uid://dnfbr7ygru6mn" path="res://assets/wukong16bit/run wk_sprite_2.png" id="3_o4xdr"]
+[ext_resource type="Texture2D" uid="uid://7ctu5f3opcqq" path="res://assets/wukong16bit/run wk_sprite_3.png" id="4_7v0kq"]
+[ext_resource type="Texture2D" uid="uid://clcme30hjikpp" path="res://assets/wukong16bit/stand wk_sprite_3.png" id="4_ynrwm"]
+[ext_resource type="Texture2D" uid="uid://dbhxfuoxm64ox" path="res://assets/wukong16bit/run wk_sprite_4.png" id="5_mdccu"]
+[ext_resource type="Texture2D" uid="uid://c8trq6gnkbcou" path="res://assets/wukong16bit/stand wk_sprite_4.png" id="5_mhtng"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_648ym"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_l1ce1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_o4xdr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_7v0kq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_mdccu")
+}],
+"loop": true,
+"name": &"run",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_qa27d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_h8f8b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_ynrwm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_mhtng")
+}],
+"loop": true,
+"name": &"stand",
+"speed": 7.0
+}]
+
+[node name="Unit" type="CharacterBody2D"]
+script = ExtResource("1_yykpv")
+metadata/_edit_group_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_648ym")
+animation = &"stand"
+autoplay = "stand"
+frame_progress = 0.495719

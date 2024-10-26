@@ -2,7 +2,7 @@ extends Camera2D
 
 signal camera_mode_changed(is_camera_mode: bool)
 
-const CAMERA_SPEED = 200
+const CAMERA_SPEED = 300
 var is_camera_mode := false
 
 # Called when the node enters the scene tree for the first time.
@@ -33,6 +33,5 @@ func handle_camera_movement(delta):
 		direction.x = -1
 	if Input.is_action_pressed("move_right"):
 		direction.x = 1
-	
 	position += direction * CAMERA_SPEED * delta
 			

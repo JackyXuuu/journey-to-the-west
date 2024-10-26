@@ -82,7 +82,7 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 		set_player_state(States.IDLE)
 
 func update_animation():
-	if input_dir != 0 and state == States.IDLE:
+	if input_dir != 0 and state == States.IDLE and is_controllable:
 		set_player_state(States.RUNNING)
 	elif state == States.RUNNING and input_dir == 0:
 		set_player_state(States.IDLE)
@@ -90,10 +90,11 @@ func update_animation():
 func update_direction_facing():
 	if input_dir < 0 and !flipped:
 		flipped = true
-		scale.x *= -1 
+		animated_sprite.scale.x = -1
 	elif input_dir > 0 and flipped:
 		flipped = false
-		scale.x*= -1 
+		animated_sprite.scale.x = 1
+	
 		
 func start(pos):
 	position = pos
