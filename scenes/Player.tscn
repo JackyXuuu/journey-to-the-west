@@ -1,13 +1,13 @@
-[gd_scene load_steps=26 format=3 uid="uid://c8ppw67pqbx3t"]
+[gd_scene load_steps=27 format=3 uid="uid://ydge52gon0gi"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_trmis"]
+[ext_resource type="Texture2D" uid="uid://dhqh0lk50ue32" path="res://assets/wukong16bit/atk wk 3_sprite_1.png" id="2_e6u0u"]
 [ext_resource type="Texture2D" uid="uid://5auvyc1uom6t" path="res://assets/sprites/wukong16bit/atk wk 2_sprite_1.png" id="2_e8vyv"]
-[ext_resource type="Texture2D" uid="uid://dp6qdlmb4e6si" path="res://assets/sprites/wukong16bit/atk wk_sprite_1.png" id="2_ujh11"]
-[ext_resource type="Texture2D" uid="uid://c1rxt08jhg8m8" path="res://assets/sprites/wukong16bit/atk wk_sprite_2.png" id="3_b0eab"]
 [ext_resource type="Texture2D" uid="uid://c2arin4i2yuoc" path="res://assets/sprites/wukong16bit/atk wk 2_sprite_2.png" id="3_mjxeb"]
-[ext_resource type="Texture2D" uid="uid://b3s4bs00qv5d7" path="res://assets/sprites/wukong16bit/atk wk_sprite_3.png" id="4_byqrx"]
+[ext_resource type="Texture2D" uid="uid://dxsm83iq4hwr1" path="res://assets/wukong16bit/atk wk 3_sprite_2.png" id="3_wblyo"]
+[ext_resource type="Texture2D" uid="uid://byi3nppkrqr3t" path="res://assets/wukong16bit/atk wk 3_sprite_3.png" id="4_4njiv"]
 [ext_resource type="Texture2D" uid="uid://c8ti1mivk8lvv" path="res://assets/sprites/wukong16bit/atk wk 2_sprite_3.png" id="4_jbvv3"]
-[ext_resource type="Texture2D" uid="uid://b22o3krpgym42" path="res://assets/sprites/wukong16bit/atk wk_sprite_4.png" id="5_us3uw"]
+[ext_resource type="Texture2D" uid="uid://d20mejqit4s2a" path="res://assets/wukong16bit/atk wk 3_sprite_4.png" id="5_216xd"]
 [ext_resource type="Texture2D" uid="uid://by3p5y0v0ffxv" path="res://assets/sprites/wukong16bit/atk wk 2_sprite_4.png" id="5_ycdx5"]
 [ext_resource type="Texture2D" uid="uid://d2he1gk5gfk5g" path="res://assets/sprites/wukong16bit/stand wk_sprite_1.png" id="6_jx0bg"]
 [ext_resource type="Texture2D" uid="uid://csp4dimu0nkrw" path="res://assets/sprites/wukong16bit/stand wk_sprite_2.png" id="7_g18cb"]
@@ -22,21 +22,22 @@
 [ext_resource type="Texture2D" uid="uid://brgb8hpir63cc" path="res://assets/sprites/wukong16bit/run wk_sprite_3.png" id="20_juxop"]
 [ext_resource type="Texture2D" uid="uid://83uyo8ygqga1" path="res://assets/sprites/wukong16bit/run wk_sprite_4.png" id="21_pie4x"]
 [ext_resource type="Script" path="res://scenes/staff_hit.gd" id="22_ddqhi"]
+[ext_resource type="Script" path="res://scripts/camera_controller.gd" id="23_yfkpm"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_58t4p"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("4_byqrx")
+"texture": ExtResource("2_e6u0u")
 }, {
 "duration": 1.0,
-"texture": ExtResource("2_ujh11")
+"texture": ExtResource("3_wblyo")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_b0eab")
+"texture": ExtResource("4_4njiv")
 }, {
 "duration": 1.0,
-"texture": ExtResource("5_us3uw")
+"texture": ExtResource("5_216xd")
 }],
 "loop": false,
 "name": &"attack0",
@@ -112,7 +113,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_41re4"]
-size = Vector2(17.9375, 23)
+size = Vector2(9.89397, 17.8261)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ym836"]
 radius = 12.0
@@ -123,22 +124,28 @@ script = ExtResource("1_trmis")
 metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(1, 0.990917)
 sprite_frames = SubResource("SpriteFrames_58t4p")
-animation = &"run"
+animation = &"attack0"
 autoplay = "idle"
+frame = 3
+frame_progress = 1.0
 
 [node name="StaffHit" type="Area2D" parent="AnimatedSprite2D"]
 script = ExtResource("22_ddqhi")
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/StaffHit"]
-position = Vector2(19, 1)
+position = Vector2(14.6532, 4.81208e-07)
 scale = Vector2(1.08082, 1.24546)
 shape = SubResource("RectangleShape2D_41re4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1, 0)
 shape = SubResource("CapsuleShape2D_ym836")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+script = ExtResource("23_yfkpm")
 
 [connection signal="animation_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_changed"]
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
