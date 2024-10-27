@@ -1,8 +1,13 @@
+<<<<<<< HEAD
 [gd_scene load_steps=27 format=3 uid="uid://rcqurxcu2061"]
+=======
+[gd_scene load_steps=28 format=3 uid="uid://ydge52gon0gi"]
+>>>>>>> refs/remotes/origin/master
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_trmis"]
 [ext_resource type="Texture2D" uid="uid://dhqh0lk50ue32" path="res://assets/wukong16bit/atk wk 3_sprite_1.png" id="2_e6u0u"]
 [ext_resource type="Texture2D" uid="uid://5auvyc1uom6t" path="res://assets/sprites/wukong16bit/atk wk 2_sprite_1.png" id="2_e8vyv"]
+[ext_resource type="Resource" uid="uid://dm82jiaguqeum" path="res://resources/player_stats.tres" id="2_tyvmh"]
 [ext_resource type="Texture2D" uid="uid://c2arin4i2yuoc" path="res://assets/sprites/wukong16bit/atk wk 2_sprite_2.png" id="3_mjxeb"]
 [ext_resource type="Texture2D" uid="uid://dxsm83iq4hwr1" path="res://assets/wukong16bit/atk wk 3_sprite_2.png" id="3_wblyo"]
 [ext_resource type="Texture2D" uid="uid://byi3nppkrqr3t" path="res://assets/wukong16bit/atk wk 3_sprite_3.png" id="4_4njiv"]
@@ -21,7 +26,7 @@
 [ext_resource type="Texture2D" uid="uid://uxbi6ergcatt" path="res://assets/sprites/wukong16bit/run wk_sprite_2.png" id="19_yh8jm"]
 [ext_resource type="Texture2D" uid="uid://brgb8hpir63cc" path="res://assets/sprites/wukong16bit/run wk_sprite_3.png" id="20_juxop"]
 [ext_resource type="Texture2D" uid="uid://83uyo8ygqga1" path="res://assets/sprites/wukong16bit/run wk_sprite_4.png" id="21_pie4x"]
-[ext_resource type="Script" path="res://scripts/camera_controller.gd" id="23_yfkpm"]
+[ext_resource type="Script" path="res://scripts/camera_manager.gd" id="23_yfkpm"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_58t4p"]
 animations = [{
@@ -117,12 +122,17 @@ script/source = "extends Area2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
-
+	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
+
+func get_damage() -> int:
+	var owner_stats = get_meta(\"owner_stats\")
+	if owner_stats:
+		return owner_stats.attack_damage
+	return 0
 
 func _on_body_entered(body: Node2D) -> void:
 	print(body.name)
@@ -140,6 +150,7 @@ position = Vector2(-1, 0)
 scale = Vector2(1.0067, 0.996922)
 collision_layer = 2
 script = ExtResource("1_trmis")
+stats = ExtResource("2_tyvmh")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(1, 0.990917)
@@ -163,8 +174,12 @@ position = Vector2(-1, 0)
 shape = SubResource("CapsuleShape2D_ym836")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+<<<<<<< HEAD
 position = Vector2(65.5607, -44.1359)
+=======
+>>>>>>> refs/remotes/origin/master
 scale = Vector2(7.08, 2.24766)
+offset = Vector2(20, -30)
 zoom = Vector2(4, 4)
 process_callback = 0
 limit_smoothed = true

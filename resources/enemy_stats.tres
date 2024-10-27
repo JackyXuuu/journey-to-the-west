@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="EntityStats" load_steps=2 format=3 uid="uid://dc8rr4uit2a8x"]
+
+[ext_resource type="Script" path="res://scripts/entity_stats.gd" id="1_v3joc"]
+
+[resource]
+script = ExtResource("1_v3joc")
+max_health = 5
+current_health = 5
+attack_damage = 1
+sprint_speed = 60
+jump_height = 0

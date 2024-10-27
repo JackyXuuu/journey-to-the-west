@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
-@export var speed = 60
+@export var stats : EntityStats
+
 var direction = -1 
 
 enum States {
@@ -16,7 +17,7 @@ func _ready():
 	pass
 
 func _physics_process(delta):
-	velocity.x = direction * speed
+	velocity.x = direction * stats.sprint_speed
 	set_state(States.RUNNING)
 	move_and_slide()
 
@@ -30,8 +31,11 @@ func set_state(new_state: int) -> void:
 		animated_sprite.play("run")
 	
 func _on_hurtbox_area_entered(area: Area2D) -> void:
-	if area == $Hurtbox: 
-		return
-	queue_free()
-	print("abc123")
-	pass # Replace with function body.
+	if area.get_collision_mask_value(constants.PLAYER_ATTACK_LAYER):
+		if area.has_method("get_damage"):
+			var damage = area.get_damage()
+			stats.decrease_health(damage)
+			print("Enemy hit with damage: ", damage)
+			
+			if stats.current_health <= 0:
+				queue_free()
