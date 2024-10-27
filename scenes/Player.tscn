@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_trmis"]
 [ext_resource type="Texture2D" uid="uid://dhqh0lk50ue32" path="res://assets/wukong16bit/atk wk 3_sprite_1.png" id="2_e6u0u"]
 [ext_resource type="Texture2D" uid="uid://5auvyc1uom6t" path="res://assets/sprites/wukong16bit/atk wk 2_sprite_1.png" id="2_e8vyv"]
-[ext_resource type="Resource" uid="uid://dm82jiaguqeum" path="res://resources/player_stats.tres" id="2_tyvmh"]
+[ext_resource type="Resource" uid="uid://chqcxypf01urd" path="res://resources/player_stats.tres" id="2_tyvmh"]
 [ext_resource type="Texture2D" uid="uid://c2arin4i2yuoc" path="res://assets/sprites/wukong16bit/atk wk 2_sprite_2.png" id="3_mjxeb"]
 [ext_resource type="Texture2D" uid="uid://dxsm83iq4hwr1" path="res://assets/wukong16bit/atk wk 3_sprite_2.png" id="3_wblyo"]
 [ext_resource type="Texture2D" uid="uid://byi3nppkrqr3t" path="res://assets/wukong16bit/atk wk 3_sprite_3.png" id="4_4njiv"]
