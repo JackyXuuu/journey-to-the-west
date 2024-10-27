@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=4 uid="uid://dpam0xn0prbdy"]
+[gd_scene load_steps=8 format=4 uid="uid://cwjgjjytq3cs7"]
 
 [ext_resource type="Script" path="res://scripts/TestLevel.gd" id="1_5bhls"]
-[ext_resource type="PackedScene" uid="uid://ydge52gon0gi" path="res://scenes/Player.tscn" id="1_r6qel"]
-[ext_resource type="Texture2D" uid="uid://b8wpe2ty1bb4y" path="res://assets/sprites/wukong16bit/world_tileset.png" id="2_c386q"]
-[ext_resource type="PackedScene" path="res://scenes/Mob.tscn" id="2_no1cm"]
+[ext_resource type="PackedScene" uid="uid://rcqurxcu2061" path="res://scenes/Player.tscn" id="1_r6qel"]
+[ext_resource type="Texture2D" uid="uid://b8wpe2ty1bb4y" path="res://assets/sprites/world_tileset.png" id="2_c386q"]
+[ext_resource type="PackedScene" uid="uid://d0sxlok03prqf" path="res://scenes/Mob.tscn" id="2_no1cm"]
+[ext_resource type="Texture2D" uid="uid://brmgoolej056i" path="res://assets/backgrounds/xOWRPX.png" id="6_ydo70"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rrnrn"]
 texture = ExtResource("2_c386q")
@@ -143,22 +144,27 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_rrnrn")
 
 [node name="TestLevel" type="Node2D"]
+position = Vector2(-1.26218e-29, -1)
 scale = Vector2(1.00413, 0.991191)
 script = ExtResource("1_5bhls")
 mob_scene = ExtResource("2_no1cm")
 
 [node name="Player" parent="." instance=ExtResource("1_r6qel")]
+position = Vector2(1.99177, -1.16031e-07)
+scale = Vector2(1, 1)
+metadata/_edit_group_ = true
 
 [node name="TileMap" type="Node" parent="."]
 
 [node name="Layer0" type="TileMapLayer" parent="TileMap"]
 light_mask = 7
 use_parent_material = true
+position = Vector2(-29, 31)
 tile_map_data = PackedByteArray("AAD6/wQAAAAAAAAAAAD7/wQAAAAAAAAAAAD8/wQAAAAAAAAAAAD+/wQAAAAAAAAAAAD9/wQAAAAAAAAAAAD//wQAAAAAAAAAAAAAAAQAAAAAAAAAAAABAAQAAAAAAAAAAAADAAQAAAAAAAAAAAACAAQAAAAAAAAAAAAEAAQAAAAAAAAAAAAFAAQAAAAAAAAAAAAGAAQAAAAAAAAAAAAHAAQAAAAAAAAAAAD5/wQAAAAAAAAAAAD4/wQAAAAAAAAAAAAIAAQAAAAAAAAAAAAJAAQAAAAAAAAAAAD5/wMAAAAAAAAAAAD5/wIAAAAAAAAAAAA=")
 tile_set = SubResource("TileSet_3xxd2")
 
 [node name="StartPosition" type="Marker2D" parent="."]
-position = Vector2(-96.601, 50.4444)
+position = Vector2(-113.531, 63.5599)
 scale = Vector2(0.995887, 1.00889)
 
 [node name="StartTimer" type="Timer" parent="."]
@@ -169,7 +175,16 @@ one_shot = true
 wait_time = 0.5
 
 [node name="MobSpawnLocation" type="Marker2D" parent="."]
-position = Vector2(123.49, 52.4621)
+position = Vector2(93.6134, 58.5155)
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.5, 0.5)
+motion_mirroring = Vector2(544, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+texture = ExtResource("6_ydo70")
 
 [connection signal="timeout" from="StartTimer" to="." method="_on_start_timer_timeout"]
 [connection signal="timeout" from="MobTimer" to="." method="_on_mob_timer_timeout"]

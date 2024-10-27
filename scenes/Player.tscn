@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://ydge52gon0gi"]
+[gd_scene load_steps=27 format=3 uid="uid://rcqurxcu2061"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_trmis"]
 [ext_resource type="Texture2D" uid="uid://dhqh0lk50ue32" path="res://assets/wukong16bit/atk wk 3_sprite_1.png" id="2_e6u0u"]
@@ -163,7 +163,7 @@ position = Vector2(-1, 0)
 shape = SubResource("CapsuleShape2D_ym836")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(1, -25)
+position = Vector2(65.5607, -44.1359)
 scale = Vector2(7.08, 2.24766)
 zoom = Vector2(4, 4)
 process_callback = 0
