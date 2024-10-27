@@ -58,7 +58,7 @@ height = 26.0
 scale = Vector2(1, 0.99738)
 collision_layer = 4
 script = ExtResource("1_5ohvy")
-stats = ExtResource("2_v3s5r")
+base_stats = ExtResource("2_v3s5r")
 metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -81,5 +81,11 @@ collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
 shape = SubResource("CapsuleShape2D_3ef2s")
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+offset_right = 4.0
+offset_bottom = 27.0
+
+[node name="HealthBarTimer" type="Timer" parent="."]
 
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]

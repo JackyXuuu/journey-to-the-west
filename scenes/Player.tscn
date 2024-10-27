@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://ydge52gon0gi"]
+[gd_scene load_steps=29 format=3 uid="uid://ydge52gon0gi"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_trmis"]
 [ext_resource type="Texture2D" uid="uid://dhqh0lk50ue32" path="res://assets/wukong16bit/atk wk 3_sprite_1.png" id="2_e6u0u"]
@@ -23,6 +23,7 @@
 [ext_resource type="Texture2D" uid="uid://brgb8hpir63cc" path="res://assets/sprites/wukong16bit/run wk_sprite_3.png" id="20_juxop"]
 [ext_resource type="Texture2D" uid="uid://83uyo8ygqga1" path="res://assets/sprites/wukong16bit/run wk_sprite_4.png" id="21_pie4x"]
 [ext_resource type="Script" path="res://scripts/camera_manager.gd" id="23_yfkpm"]
+[ext_resource type="PackedScene" uid="uid://cnx8jf8rtv64l" path="res://scenes/in_game_ui.tscn" id="24_d34lw"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_58t4p"]
 animations = [{
@@ -41,7 +42,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"attack0",
-"speed": 10.0
+"speed": 20.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -136,7 +137,7 @@ func _on_body_entered(body: Node2D) -> void:
 "
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_41re4"]
-size = Vector2(9.89397, 17.8261)
+size = Vector2(6.09455, 17.8261)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ym836"]
 radius = 12.0
@@ -147,6 +148,12 @@ scale = Vector2(1.0067, 0.996922)
 collision_layer = 2
 script = ExtResource("1_trmis")
 stats = ExtResource("2_tyvmh")
+
+[node name="CanvasLayer" parent="." instance=ExtResource("24_d34lw")]
+offset_left = -27.8137
+offset_top = -43.1328
+offset_right = -27.8137
+offset_bottom = -43.1328
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(1, 0.990917)
@@ -160,7 +167,7 @@ script = SubResource("GDScript_wqrrd")
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/StaffHit"]
-position = Vector2(14.6532, 4.81208e-07)
+position = Vector2(12.6, 4.81208e-07)
 scale = Vector2(1.08082, 1.24546)
 shape = SubResource("RectangleShape2D_41re4")
 disabled = true
@@ -170,6 +177,7 @@ position = Vector2(-1, 0)
 shape = SubResource("CapsuleShape2D_ym836")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(37.7471, -6.01853)
 scale = Vector2(7.08, 2.24766)
 offset = Vector2(20, -30)
 zoom = Vector2(4, 4)

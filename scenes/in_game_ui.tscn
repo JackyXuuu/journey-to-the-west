@@ -12,7 +12,7 @@ script = ExtResource("1_wphkd")
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
 offset_right = 53.0
-offset_bottom = 29.0
+offset_bottom = 27.0
 theme = SubResource("Theme_25m8e")
 value = 100.0
 script = ExtResource("1_2vy68")
