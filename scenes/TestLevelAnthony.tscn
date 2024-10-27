@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=4 uid="uid://dpam0xn0prbdy"]
+[gd_scene load_steps=8 format=4 uid="uid://dpam0xn0prbdy"]
 
 [ext_resource type="Script" path="res://scripts/TestLevel.gd" id="1_5bhls"]
 [ext_resource type="PackedScene" uid="uid://ydge52gon0gi" path="res://scenes/Player.tscn" id="1_r6qel"]
 [ext_resource type="Texture2D" uid="uid://b8wpe2ty1bb4y" path="res://assets/sprites/wukong16bit/world_tileset.png" id="2_c386q"]
-[ext_resource type="PackedScene" path="res://scenes/Mob.tscn" id="2_no1cm"]
+[ext_resource type="PackedScene" uid="uid://bxtv6puw0rsd5" path="res://scenes/Mob.tscn" id="2_no1cm"]
+[ext_resource type="PackedScene" uid="uid://cnx8jf8rtv64l" path="res://scenes/in_game_ui.tscn" id="5_kh877"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rrnrn"]
 texture = ExtResource("2_c386q")
@@ -170,6 +171,8 @@ wait_time = 0.5
 
 [node name="MobSpawnLocation" type="Marker2D" parent="."]
 position = Vector2(123.49, 52.4621)
+
+[node name="CanvasLayer" parent="." instance=ExtResource("5_kh877")]
 
 [connection signal="timeout" from="StartTimer" to="." method="_on_start_timer_timeout"]
 [connection signal="timeout" from="MobTimer" to="." method="_on_mob_timer_timeout"]

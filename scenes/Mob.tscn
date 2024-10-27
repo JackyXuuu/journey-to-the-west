@@ -1,7 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://d0sxlok03prqf"]
+[gd_scene load_steps=14 format=3 uid="uid://bxtv6puw0rsd5"]
 
 [ext_resource type="Script" path="res://scripts/enemy.gd" id="1_5ohvy"]
 [ext_resource type="Texture2D" uid="uid://branr6dw0plaw" path="res://assets/sprites/wukong16bit/stand_sprite_1.png" id="2_oek15"]
+[ext_resource type="Resource" uid="uid://dc8rr4uit2a8x" path="res://resources/enemy_stats.tres" id="2_v3s5r"]
 [ext_resource type="Texture2D" uid="uid://cn8kcecekegn8" path="res://assets/sprites/wukong16bit/stand_sprite_2.png" id="3_dbmnm"]
 [ext_resource type="Texture2D" uid="uid://b3yk5l2igtfth" path="res://assets/sprites/wukong16bit/stand_sprite_3.png" id="4_mr1na"]
 [ext_resource type="Texture2D" uid="uid://dwp4sheq211vs" path="res://assets/sprites/wukong16bit/stand_sprite_4.png" id="5_0whnk"]
@@ -54,8 +55,10 @@ height = 26.0
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3ef2s"]
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
+scale = Vector2(1, 0.99738)
 collision_layer = 4
 script = ExtResource("1_5ohvy")
+stats = ExtResource("2_v3s5r")
 metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

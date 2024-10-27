@@ -1,7 +1,6 @@
 extends CharacterBody2D
 
-@export var speed = 150
-@export var jump_force = 250
+@export var stats: EntityStats
 
 enum States {IDLE, RUNNING, JUMPING, ATTACK}
 var state:States = States.IDLE
@@ -14,9 +13,12 @@ var is_controllable := true # if player is currently controllable
 @onready var animated_sprite : AnimatedSprite2D = $AnimatedSprite2D
 @onready var camera: Camera2D = $Camera2D  # Adjust the node path to match your scene
 @onready var weapon: CollisionShape2D = $AnimatedSprite2D/StaffHit/CollisionShape2D
+@onready var weapon_area: Area2D = $AnimatedSprite2D/StaffHit
 
 func _ready():
 	screen_size = get_viewport_rect().size
+	weapon_area.set_meta("owner_stats", stats)
+	add_to_group("player")
 	# connects to camera when the mode changes
 	if camera:
 		camera.camera_mode_changed.connect(_on_camera_mode_changed)
@@ -26,7 +28,7 @@ func _physics_process(delta):
 		velocity.x = 0
 	else:
 		input_dir = Input.get_axis("move_left", "move_right")
-		velocity.x = input_dir * speed
+		velocity.x = input_dir * stats.sprint_speed
 	
 	if not is_on_floor():
 		velocity.y += gravity * delta
@@ -73,7 +75,7 @@ func attack():
 	
 	
 func jump():
-	velocity.y = -jump_force
+	velocity.y = -stats.jump_height
 	set_player_state(States.JUMPING)
 
 func _on_animated_sprite_2d_animation_finished() -> void:
