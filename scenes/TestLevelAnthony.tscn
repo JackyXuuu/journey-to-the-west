@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 [gd_scene load_steps=8 format=4 uid="uid://cwjgjjytq3cs7"]
 
 [ext_resource type="Script" path="res://scripts/TestLevel.gd" id="1_5bhls"]
@@ -6,15 +5,6 @@
 [ext_resource type="Texture2D" uid="uid://b8wpe2ty1bb4y" path="res://assets/sprites/world_tileset.png" id="2_c386q"]
 [ext_resource type="PackedScene" uid="uid://d0sxlok03prqf" path="res://scenes/Mob.tscn" id="2_no1cm"]
 [ext_resource type="Texture2D" uid="uid://brmgoolej056i" path="res://assets/backgrounds/xOWRPX.png" id="6_ydo70"]
-=======
-[gd_scene load_steps=8 format=4 uid="uid://dpam0xn0prbdy"]
-
-[ext_resource type="Script" path="res://scripts/TestLevel.gd" id="1_5bhls"]
-[ext_resource type="PackedScene" uid="uid://ydge52gon0gi" path="res://scenes/Player.tscn" id="1_r6qel"]
-[ext_resource type="Texture2D" uid="uid://b8wpe2ty1bb4y" path="res://assets/sprites/wukong16bit/world_tileset.png" id="2_c386q"]
-[ext_resource type="PackedScene" uid="uid://bxtv6puw0rsd5" path="res://scenes/Mob.tscn" id="2_no1cm"]
-[ext_resource type="PackedScene" uid="uid://cnx8jf8rtv64l" path="res://scenes/in_game_ui.tscn" id="5_kh877"]
->>>>>>> refs/remotes/origin/master
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rrnrn"]
 texture = ExtResource("2_c386q")
@@ -195,8 +185,6 @@ motion_mirroring = Vector2(544, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
 texture = ExtResource("6_ydo70")
-
-[node name="CanvasLayer" parent="." instance=ExtResource("5_kh877")]
 
 [connection signal="timeout" from="StartTimer" to="." method="_on_start_timer_timeout"]
 [connection signal="timeout" from="MobTimer" to="." method="_on_mob_timer_timeout"]
