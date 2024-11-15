@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="EntityStats" load_steps=2 format=3 uid="uid://chqcxypf01urd"]
 
-[ext_resource type="Script" path="res://scripts/entity_stats.gd" id="1_piqri"]
+[ext_resource type="Script" path="res://units/entity_stats.gd" id="1_piqri"]
 
 [resource]
 script = ExtResource("1_piqri")

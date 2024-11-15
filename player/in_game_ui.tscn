@@ -1,14 +1,14 @@
 [gd_scene load_steps=4 format=3 uid="uid://dx0mgll1wp5eb"]
 
-[ext_resource type="Script" path="res://scenes/healthbar_ui.gd" id="1_2vy68"]
-[ext_resource type="Script" path="res://scripts/in_game_ui.gd" id="1_wphkd"]
+[ext_resource type="Script" path="res://player/in_game_ui.gd" id="1_o2gs5"]
+[ext_resource type="Script" path="res://player/healthbar_ui.gd" id="2_2bkjw"]
 
 [sub_resource type="Theme" id="Theme_25m8e"]
 
 [node name="CanvasLayer" type="Control"]
 layout_mode = 3
 anchors_preset = 0
-script = ExtResource("1_wphkd")
+script = ExtResource("1_o2gs5")
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
 layout_mode = 0
@@ -16,7 +16,7 @@ offset_right = 53.0
 offset_bottom = 27.0
 theme = SubResource("Theme_25m8e")
 value = 100.0
-script = ExtResource("1_2vy68")
+script = ExtResource("2_2bkjw")
 
 [node name="Label" type="Label" parent="ProgressBar"]
 layout_mode = 0

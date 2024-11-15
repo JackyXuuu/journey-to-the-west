@@ -17,7 +17,7 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-constants="*res://scripts/global_constants.gd"
+constants="*res://level/global_constants.gd"
 
 [display]
 
