@@ -11,6 +11,4 @@ func _on_pressed(mob_key: String) -> void:
 	if not mob_key:
 		pass
 	if mob_key in mob_scenes:
-		print("hello123")
-		print(mob_key)
 		spawn_mob.emit(mob_scenes[mob_key])

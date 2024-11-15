@@ -44,7 +44,6 @@ func set_state(new_state: int) -> void:
 		
 func _on_health_changed(current_health: float, max_health: float) -> void:
 	# Update health bar
-	print("healthchange")
 	health_bar.value = current_health
 
 	# Show health bar
