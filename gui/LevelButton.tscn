@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://134h554rc7hl"]
+
+[ext_resource type="Script" path="res://gui/level_button.gd" id="1_kbkgj"]
+
+[node name="LevelButton" type="Button"]
+custom_minimum_size = Vector2(200, 200)
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -100.0
+offset_right = 100.0
+offset_bottom = 200.0
+grow_horizontal = 2
+script = ExtResource("1_kbkgj")
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="pressed" from="." to="." method="_on_button_pressed"]

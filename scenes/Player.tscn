@@ -23,7 +23,7 @@
 [ext_resource type="Texture2D" uid="uid://brgb8hpir63cc" path="res://assets/sprites/wukong16bit/run wk_sprite_3.png" id="20_juxop"]
 [ext_resource type="Texture2D" uid="uid://83uyo8ygqga1" path="res://assets/sprites/wukong16bit/run wk_sprite_4.png" id="21_pie4x"]
 [ext_resource type="Script" path="res://scripts/camera_manager.gd" id="23_yfkpm"]
-[ext_resource type="PackedScene" uid="uid://cnx8jf8rtv64l" path="res://scenes/in_game_ui.tscn" id="24_d34lw"]
+[ext_resource type="PackedScene" uid="uid://dx0mgll1wp5eb" path="res://scenes/in_game_ui.tscn" id="24_d34lw"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_58t4p"]
 animations = [{

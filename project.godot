@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Wukong's Odyssey"
-run/main_scene="res://scenes/TestLevelAnthony.tscn"
+run/main_scene="res://gui/LevelSelect.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
 

@@ -29,13 +29,12 @@ func _ready():
 	# Connect to stats signals
 	stats.health_changed.connect(_on_health_changed)
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	velocity.x = direction * stats.sprint_speed
 	set_state(States.RUNNING)
 	move_and_slide()
 
 func set_state(new_state: int) -> void:
-	var previous_state := state
 	state = new_state
 	# You can check both the previous and the new state to determine what to do when the state changes. This checks the previous state.
 	if state == States.IDLE:

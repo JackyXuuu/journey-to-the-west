@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bxtv6puw0rsd5"]
+[gd_scene load_steps=14 format=3 uid="uid://d0sxlok03prqf"]
 
 [ext_resource type="Script" path="res://scripts/enemy.gd" id="1_5ohvy"]
 [ext_resource type="Texture2D" uid="uid://branr6dw0plaw" path="res://assets/sprites/wukong16bit/stand_sprite_1.png" id="2_oek15"]
