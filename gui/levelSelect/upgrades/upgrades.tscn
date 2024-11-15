@@ -1,4 +1,6 @@
-[gd_scene format=3 uid="uid://cmkmhf37koh04"]
+[gd_scene load_steps=2 format=3 uid="uid://cmkmhf37koh04"]
+
+[ext_resource type="Script" path="res://gui/levelSelect/upgrades/upgrades.gd" id="1_mdgfr"]
 
 [node name="Upgrades" type="Control"]
 layout_mode = 3
@@ -7,6 +9,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_mdgfr")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -31,7 +34,17 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Button" type="Button" parent="ColorRect/HBoxContainer"]
+[node name="UpgradeWukongAttack" type="Button" parent="ColorRect/HBoxContainer"]
 layout_mode = 2
 text = "Upgrade Wukong
 "
+
+[node name="BackButton" type="Button" parent="ColorRect"]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+text = "Back
+"
+
+[connection signal="pressed" from="ColorRect/HBoxContainer/UpgradeWukongAttack" to="." method="_on_upgrade_wukong_attack_pressed"]
+[connection signal="pressed" from="ColorRect/BackButton" to="." method="_on_back_button_pressed"]

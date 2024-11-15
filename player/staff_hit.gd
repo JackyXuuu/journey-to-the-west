@@ -11,6 +11,7 @@ func _process(delta: float) -> void:
 
 func get_damage() -> int:
 	var owner_stats = get_meta("owner_stats")
+	print(owner_stats.attack_damage)
 	if owner_stats:
 		return owner_stats.attack_damage
 	return 0

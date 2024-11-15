@@ -7,5 +7,5 @@ script = ExtResource("1_piqri")
 max_health = 100
 current_health = 100
 attack_damage = 2
-sprint_speed = 150
+sprint_speed = 100
 jump_height = 250

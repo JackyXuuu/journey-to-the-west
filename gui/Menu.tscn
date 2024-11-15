@@ -1,9 +1,9 @@
 [gd_scene load_steps=2 format=3 uid="uid://c0damj46tohyp"]
 
-[sub_resource type="GDScript" id="GDScript_4e1i1"]
+[ext_resource type="Script" path="res://gui/menu.gd" id="1_xg5c1"]
 
 [node name="Menu" type="CanvasLayer"]
-script = SubResource("GDScript_4e1i1")
+script = ExtResource("1_xg5c1")
 
 [node name="Label" type="Label" parent="."]
 anchors_preset = 5
@@ -32,3 +32,5 @@ text = "Start New Game"
 [node name="ContinueGame" type="Button" parent="."]
 offset_right = 8.0
 offset_bottom = 8.0
+
+[connection signal="pressed" from="StartGame" to="." method="_on_start_game_pressed"]

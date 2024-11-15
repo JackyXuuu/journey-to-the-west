@@ -125,7 +125,7 @@ position = Vector2(-1, 0)
 scale = Vector2(1.0067, 0.996922)
 collision_layer = 2
 script = ExtResource("1_trmis")
-stats = ExtResource("2_tyvmh")
+base_stats = ExtResource("2_tyvmh")
 
 [node name="CanvasLayer" parent="." instance=ExtResource("24_d34lw")]
 offset_left = -27.8137

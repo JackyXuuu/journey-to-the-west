@@ -150,6 +150,19 @@ script = ExtResource("1_lkkhn")
 mob_scene = ExtResource("2_b6us1")
 
 [node name="Player" parent="." instance=ExtResource("3_xesli")]
+position = Vector2(-0.995887, 0)
+
+[node name="Hud" parent="Player" instance=ExtResource("6_llqte")]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+offset_left = 57.377
+offset_top = 47.5641
+offset_right = 57.377
+offset_bottom = 47.5641
+grow_vertical = 0
+size_flags_vertical = 8
 
 [node name="TileMap" type="Node" parent="."]
 
@@ -182,17 +195,17 @@ motion_mirroring = Vector2(544, 0)
 scale = Vector2(1.00413, 0.991191)
 texture = ExtResource("5_itn0p")
 
-[node name="Hud" parent="." instance=ExtResource("6_llqte")]
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-grow_vertical = 0
-size_flags_vertical = 8
-
 [node name="MobSpawnLocation" type="Marker2D" parent="."]
 position = Vector2(120.502, 85.7554)
 
+[node name="BackButton" type="Button" parent="."]
+offset_left = -128.469
+offset_top = 4.03555
+offset_right = -83.4694
+offset_bottom = 35.0355
+text = "back"
+
+[connection signal="spawn_mob" from="Player/Hud" to="." method="_on_hud_spawn_mob"]
 [connection signal="timeout" from="StartTimer" to="." method="_on_start_timer_timeout"]
 [connection signal="timeout" from="MobTimer" to="." method="_on_mob_timer_timeout"]
-[connection signal="spawn_mob" from="Hud" to="." method="_on_hud_spawn_mob"]
+[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]

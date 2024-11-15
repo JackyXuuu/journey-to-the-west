@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
-@export var stats: EntityStats
-
+@export var base_stats: EntityStats
+var stats: EntityStats
 enum States {IDLE, RUNNING, JUMPING, ATTACK}
 var state:States = States.IDLE
 var v = Vector2.ZERO
@@ -16,8 +16,10 @@ var is_controllable := true # if player is currently controllable
 @onready var weapon_area: Area2D = $AnimatedSprite2D/StaffHit
 
 func _ready():
+	stats = Global.player_stats
 	screen_size = get_viewport_rect().size
 	weapon_area.set_meta("owner_stats", stats)
+	print("attack:", stats.attack_damage)
 	add_to_group("player")
 	# connects to camera when the mode changes
 	if camera:
@@ -94,7 +96,10 @@ func update_direction_facing():
 		flipped = false
 		animated_sprite.scale.x = 1
 	
-		
 func start(pos):
 	position = pos
 	show()
+
+func update_player_attack():
+	weapon_area.set_meta("owner_stats", weapon_area.get_meta("Attack Damage") + 10)
+	

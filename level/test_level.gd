@@ -37,3 +37,7 @@ func _on_hud_spawn_mob(mob_scene: PackedScene) -> void:
 	add_child(mob)
 	var mob_spawn_location = $StartPosition.position
 	mob.position = mob_spawn_location
+
+
+func _on_back_button_pressed() -> void:
+	get_tree().change_scene_to_file("res://gui/levelSelect/level_select.tscn")

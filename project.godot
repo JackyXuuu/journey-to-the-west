@@ -11,13 +11,13 @@ config_version=5
 [application]
 
 config/name="Wukong's Odyssey"
-run/main_scene="res://gui/levelSelect/level_select.tscn"
+run/main_scene="res://gui/menu.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
-constants="*res://level/global_constants.gd"
+Global="*res://level/globals.gd"
 
 [display]
 

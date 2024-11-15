@@ -65,7 +65,7 @@ func _on_health_bar_timer_timeout() -> void:
 		health_bar.visible = false
 
 func _on_hurtbox_area_entered(area: Area2D) -> void:
-	if area.get_collision_mask_value(constants.PLAYER_ATTACK_LAYER):
+	if area.get_collision_mask_value(Global.PLAYER_ATTACK_LAYER):
 		if area.has_method("get_damage"):
 			var damage = area.get_damage()
 			stats.decrease_health(damage)
