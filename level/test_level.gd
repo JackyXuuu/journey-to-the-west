@@ -8,7 +8,7 @@ func _ready() -> void:
 	pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass
 
 func game_over():
@@ -29,6 +29,11 @@ func _on_mob_timer_timeout():
 	var mob_spawn_location = $MobSpawnLocation.position
 	# Set the mob's position to a random location.
 	mob.position = mob_spawn_location
-
 	# Spawn the mob by adding it to the Main scene.
 	add_child(mob)
+
+func _on_hud_spawn_mob(mob_scene: PackedScene) -> void:
+	var mob = mob_scene.instantiate()
+	add_child(mob)
+	var mob_spawn_location = $StartPosition.position
+	mob.position = mob_spawn_location

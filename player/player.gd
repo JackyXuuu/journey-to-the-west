@@ -47,9 +47,7 @@ func _unhandled_input(event):
 		attack()
 
 func set_player_state(new_state: int) -> void:
-	var previous_state := state
 	state = new_state
-
 	# You can check both the previous and the new state to determine what to do when the state changes. This checks the previous state.
 	if state == States.IDLE:
 		animated_sprite.play("idle")
@@ -69,7 +67,6 @@ func _on_camera_mode_changed(camera_mode: bool):
 
 	
 func attack():
-	print("attack")
 	weapon.disabled = false
 	set_player_state(States.ATTACK)	
 	

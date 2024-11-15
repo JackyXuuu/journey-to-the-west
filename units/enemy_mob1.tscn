@@ -1,30 +1,30 @@
 [gd_scene load_steps=14 format=3 uid="uid://d0sxlok03prqf"]
 
-[ext_resource type="Script" path="res://units/enemy.gd" id="1_5ohvy"]
-[ext_resource type="Texture2D" uid="uid://branr6dw0plaw" path="res://assets/sprites/wukong16bit/stand_sprite_1.png" id="2_oek15"]
-[ext_resource type="Resource" uid="uid://b8whi3rsvjaf1" path="res://resources/enemy_stats.tres" id="2_v3s5r"]
-[ext_resource type="Texture2D" uid="uid://cn8kcecekegn8" path="res://assets/sprites/wukong16bit/stand_sprite_2.png" id="3_dbmnm"]
-[ext_resource type="Texture2D" uid="uid://b3yk5l2igtfth" path="res://assets/sprites/wukong16bit/stand_sprite_3.png" id="4_mr1na"]
-[ext_resource type="Texture2D" uid="uid://dwp4sheq211vs" path="res://assets/sprites/wukong16bit/stand_sprite_4.png" id="5_0whnk"]
-[ext_resource type="Texture2D" uid="uid://c755ofcsu4y0m" path="res://assets/sprites/wukong16bit/run_sprite_1.png" id="6_jl6dx"]
-[ext_resource type="Texture2D" uid="uid://dqc6mg16tnsmj" path="res://assets/sprites/wukong16bit/run_sprite_2.png" id="7_1ypd5"]
-[ext_resource type="Texture2D" uid="uid://b505b34yq6vcj" path="res://assets/sprites/wukong16bit/run_sprite_3.png" id="8_8xxy7"]
-[ext_resource type="Texture2D" uid="uid://hon4gc37kbnp" path="res://assets/sprites/wukong16bit/run_sprite_4.png" id="9_7e84l"]
+[ext_resource type="Script" path="res://units/enemy_mob.gd" id="1_vxwwt"]
+[ext_resource type="Resource" uid="uid://b8whi3rsvjaf1" path="res://resources/enemy_stats.tres" id="2_3ru3p"]
+[ext_resource type="Texture2D" uid="uid://branr6dw0plaw" path="res://assets/sprites/wukong16bit/stand_sprite_1.png" id="3_d1q45"]
+[ext_resource type="Texture2D" uid="uid://cn8kcecekegn8" path="res://assets/sprites/wukong16bit/stand_sprite_2.png" id="4_e3ukc"]
+[ext_resource type="Texture2D" uid="uid://b3yk5l2igtfth" path="res://assets/sprites/wukong16bit/stand_sprite_3.png" id="5_bifon"]
+[ext_resource type="Texture2D" uid="uid://dwp4sheq211vs" path="res://assets/sprites/wukong16bit/stand_sprite_4.png" id="6_uvet6"]
+[ext_resource type="Texture2D" uid="uid://c755ofcsu4y0m" path="res://assets/sprites/wukong16bit/run_sprite_1.png" id="7_nrngq"]
+[ext_resource type="Texture2D" uid="uid://dqc6mg16tnsmj" path="res://assets/sprites/wukong16bit/run_sprite_2.png" id="8_rbw18"]
+[ext_resource type="Texture2D" uid="uid://b505b34yq6vcj" path="res://assets/sprites/wukong16bit/run_sprite_3.png" id="9_sqb2c"]
+[ext_resource type="Texture2D" uid="uid://hon4gc37kbnp" path="res://assets/sprites/wukong16bit/run_sprite_4.png" id="10_byqaf"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_od5dt"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_oek15")
+"texture": ExtResource("3_d1q45")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_dbmnm")
+"texture": ExtResource("4_e3ukc")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_mr1na")
+"texture": ExtResource("5_bifon")
 }, {
 "duration": 1.0,
-"texture": ExtResource("5_0whnk")
+"texture": ExtResource("6_uvet6")
 }],
 "loop": true,
 "name": &"idle",
@@ -32,16 +32,16 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("6_jl6dx")
+"texture": ExtResource("7_nrngq")
 }, {
 "duration": 1.0,
-"texture": ExtResource("7_1ypd5")
+"texture": ExtResource("8_rbw18")
 }, {
 "duration": 1.0,
-"texture": ExtResource("8_8xxy7")
+"texture": ExtResource("9_sqb2c")
 }, {
 "duration": 1.0,
-"texture": ExtResource("9_7e84l")
+"texture": ExtResource("10_byqaf")
 }],
 "loop": true,
 "name": &"run",
@@ -57,8 +57,8 @@ height = 26.0
 [node name="CharacterBody2D" type="CharacterBody2D"]
 scale = Vector2(0.839825, 0.99738)
 collision_layer = 4
-script = ExtResource("1_5ohvy")
-base_stats = ExtResource("2_v3s5r")
+script = ExtResource("1_vxwwt")
+base_stats = ExtResource("2_3ru3p")
 metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

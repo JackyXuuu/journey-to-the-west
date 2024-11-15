@@ -1,7 +1,39 @@
 [gd_scene load_steps=3 format=3 uid="uid://nl7qrewiid0l"]
 
-[ext_resource type="Script" path="res://gui/level_select.gd" id="1_bu10g"]
-[ext_resource type="Script" path="res://gui/upgrades_button.gd" id="2_sqdg3"]
+[ext_resource type="Script" path="res://gui/levelSelect/upgrades_button.gd" id="1_27jbw"]
+
+[sub_resource type="GDScript" id="GDScript_rc85w"]
+script/source = "extends Control
+
+const LEVEL_BTN = preload(\"res://gui/levelSelect/level_button.tscn\")
+
+@export_dir var dir_path
+@onready var grid = $MarginContainer/VBoxContainer/GridContainer
+
+func _ready() -> void:
+	get_levels(dir_path)
+
+func get_levels(path):
+	var dir = DirAccess.open(path)
+	if dir:
+		dir.list_dir_begin()
+		var file_name = dir.get_next()
+		while file_name != \"\":
+			print(file_name)
+			create_level_btn('%s/%s' % [dir.get_current_dir(), file_name], file_name)
+			file_name = dir.get_next()
+		dir.list_dir_end()
+	else:
+		print(\"An error occurred when trying to access the path.\")
+		
+		
+func create_level_btn(lvl_path, lvl_name):
+	var btn = LEVEL_BTN.instantiate()
+	btn.text = lvl_name.trim_suffix('.tscn').replace(\"_\", \" \")
+	print(lvl_path)
+	btn.level_path = lvl_path
+	grid.add_child(btn)
+"
 
 [node name="LevelSelect" type="Control"]
 layout_mode = 3
@@ -10,7 +42,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_bu10g")
+script = SubResource("GDScript_rc85w")
 dir_path = "res://level/levelScenes"
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -28,8 +60,8 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -45.5
-offset_right = 45.5
+offset_left = -45.0
+offset_right = 46.0
 offset_bottom = 40.0
 grow_horizontal = 2
 
@@ -71,7 +103,7 @@ text = "Save Game
 layout_mode = 2
 text = "Upgrades
 "
-script = ExtResource("2_sqdg3")
+script = ExtResource("1_27jbw")
 
 [node name="ControlsButton" type="Button" parent="MenuOptions/HBoxContainer"]
 layout_mode = 2

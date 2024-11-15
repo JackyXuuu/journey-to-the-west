@@ -1,6 +1,6 @@
 extends Control
 
-const LEVEL_BTN = preload("res://gui/LevelButton.tscn")
+const LEVEL_BTN = preload("res://gui/levelSelect/level_button.tscn")
 
 @export_dir var dir_path
 @onready var grid = $MarginContainer/VBoxContainer/GridContainer
