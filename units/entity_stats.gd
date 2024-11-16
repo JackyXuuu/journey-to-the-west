@@ -3,11 +3,14 @@ extends Resource
 
 signal health_changed(current_health, max_health)
 
+@export var name: String
 @export var max_health: int = 100
 @export var current_health: int = 100
 @export var attack_damage: int = 10
 @export var sprint_speed: int
 @export var jump_height: int
+@export var summon_cost: int
+@export var cooldown: float
 
 func _ready():
 	current_health = max_health

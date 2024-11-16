@@ -18,7 +18,7 @@ func new_game():
 	score = 0
 	$Player.start($StartPosition.position)
 	$StartTimer.start()
-
+	
 func _on_start_timer_timeout():
 	$MobTimer.start()
 
@@ -32,8 +32,8 @@ func _on_mob_timer_timeout():
 	# Spawn the mob by adding it to the Main scene.
 	add_child(mob)
 
-func _on_hud_spawn_mob(mob_scene: PackedScene) -> void:
-	var mob = mob_scene.instantiate()
+func _on_hud_spawn_ally_mob(ally_mob_scene: PackedScene) -> void:
+	var mob = ally_mob_scene.instantiate()
 	add_child(mob)
 	var mob_spawn_location = $StartPosition.position
 	mob.position = mob_spawn_location

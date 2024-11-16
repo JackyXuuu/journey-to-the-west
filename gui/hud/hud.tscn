@@ -1,40 +1,59 @@
-[gd_scene load_steps=3 format=3 uid="uid://dwe1dpj5ydr26"]
+[gd_scene load_steps=5 format=3 uid="uid://dwe1dpj5ydr26"]
 
 [ext_resource type="Texture2D" uid="uid://c755ofcsu4y0m" path="res://assets/sprites/wukong16bit/run_sprite_1.png" id="1_hxpmd"]
 [ext_resource type="Script" path="res://gui/hud/hud.gd" id="1_k8rej"]
+[ext_resource type="LabelSettings" uid="uid://dnjaer5ho7516" path="res://assets/UISettings/hud.tres" id="2_dhkqu"]
+
+[sub_resource type="Theme" id="Theme_cupnk"]
 
 [node name="Hud" type="Control"]
 layout_mode = 3
-anchors_preset = 15
+anchors_preset = 12
+anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
-grow_vertical = 2
+grow_vertical = 0
 script = ExtResource("1_k8rej")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
+anchors_preset = 12
 anchor_top = 1.0
-anchor_right = 0.5
+anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -38.0
 offset_top = -40.0
-offset_right = 38.0
 grow_horizontal = 2
 grow_vertical = 0
+scale = Vector2(0.997572, 0.998297)
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="EssenceLabel" type="Label" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = "x 00"
+label_settings = ExtResource("2_dhkqu")
 
 [node name="SummonAllyMob1" type="Button" parent="MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
+theme = SubResource("Theme_cupnk")
 icon = ExtResource("1_hxpmd")
+expand_icon = true
 
 [node name="SummonAllyMob2" type="Button" parent="MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
+theme = SubResource("Theme_cupnk")
 icon = ExtResource("1_hxpmd")
+expand_icon = true
+
+[node name="EssenceTimer" type="Timer" parent="."]
+process_callback = 0
 
 [connection signal="pressed" from="MarginContainer/HBoxContainer/SummonAllyMob1" to="." method="_on_pressed" binds= ["AllyMob1"]]
-[connection signal="pressed" from="MarginContainer/HBoxContainer/SummonAllyMob2" to="." method="_on_pressed" binds= ["AllyMob2"]]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/SummonAllyMob2" to="." method="_on_pressed" binds= ["AllyMob1"]]
+[connection signal="timeout" from="EssenceTimer" to="." method="_on_essence_timer_timeout"]

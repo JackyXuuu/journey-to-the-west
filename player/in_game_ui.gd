@@ -15,7 +15,6 @@ func _ready():
 
 func update_health_bar(current_health: float, max_health: float) -> void:
 	var health_ratio = current_health / max_health
-	
 	# Cancel any existing tween
 	if health_bar_tween:
 		health_bar_tween.kill()
