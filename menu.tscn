@@ -1,9 +1,20 @@
-[gd_scene load_steps=2 format=3 uid="uid://ckgdonmvu2df7"]
+[gd_scene load_steps=4 format=3 uid="uid://ckgdonmvu2df7"]
 
 [ext_resource type="PackedScene" uid="uid://c0damj46tohyp" path="res://gui/menu.tscn" id="1_aaoqs"]
+[ext_resource type="LabelSettings" uid="uid://dnjaer5ho7516" path="res://assets/UISettings/hud.tres" id="2_1mnd7"]
+[ext_resource type="Theme" uid="uid://bligd2c1rejkj" path="res://assets/UISettings/button.tres" id="3_yvnys"]
 
 [node name="Menu" instance=ExtResource("1_aaoqs")]
 
+[node name="Label" parent="." index="0"]
+offset_left = -149.0
+offset_right = 151.0
+offset_bottom = 40.0
+label_settings = ExtResource("2_1mnd7")
+
 [node name="StartGame" parent="." index="1"]
-offset_top = -32.0
-offset_bottom = -1.0
+offset_left = -85.0
+offset_top = -36.0
+offset_right = 83.0
+offset_bottom = -3.0
+theme = ExtResource("3_yvnys")

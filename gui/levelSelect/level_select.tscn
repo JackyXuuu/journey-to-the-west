@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://nl7qrewiid0l"]
+[gd_scene load_steps=5 format=3 uid="uid://nl7qrewiid0l"]
 
 [ext_resource type="Script" path="res://gui/levelSelect/upgrades_button.gd" id="1_27jbw"]
 [ext_resource type="Script" path="res://gui/levelSelect/level_select.gd" id="1_rv0ot"]
+[ext_resource type="LabelSettings" uid="uid://dnjaer5ho7516" path="res://assets/UISettings/hud.tres" id="2_ibb5w"]
+[ext_resource type="Theme" uid="uid://bligd2c1rejkj" path="res://assets/UISettings/button.tres" id="3_wlahu"]
 
 [node name="LevelSelect" type="Control"]
 layout_mode = 3
@@ -41,6 +43,7 @@ custom_minimum_size = Vector2(25, 0)
 layout_mode = 2
 text = "Select Level
 "
+label_settings = ExtResource("2_ibb5w")
 horizontal_alignment = 1
 
 [node name="GridContainer" type="GridContainer" parent="MarginContainer/VBoxContainer"]
@@ -64,17 +67,20 @@ layout_mode = 2
 
 [node name="SaveGameButton" type="Button" parent="MenuOptions/HBoxContainer"]
 layout_mode = 2
+theme = ExtResource("3_wlahu")
 text = "Save Game
 "
 
 [node name="UpgradesButton" type="Button" parent="MenuOptions/HBoxContainer"]
 layout_mode = 2
+theme = ExtResource("3_wlahu")
 text = "Upgrades
 "
 script = ExtResource("1_27jbw")
 
 [node name="ControlsButton" type="Button" parent="MenuOptions/HBoxContainer"]
 layout_mode = 2
+theme = ExtResource("3_wlahu")
 text = "Controls
 "
 

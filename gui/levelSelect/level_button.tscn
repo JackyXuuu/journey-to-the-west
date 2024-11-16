@@ -1,5 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://134h554rc7hl"]
+[gd_scene load_steps=3 format=3 uid="uid://134h554rc7hl"]
 
+[ext_resource type="Theme" uid="uid://bligd2c1rejkj" path="res://assets/UISettings/button.tres" id="1_2kabm"]
 [ext_resource type="Script" path="res://gui/levelSelect/level_button.gd" id="1_6mjnb"]
 
 [node name="LevelButton" type="Button"]
@@ -11,7 +12,9 @@ offset_left = -100.0
 offset_right = 100.0
 offset_bottom = 200.0
 grow_horizontal = 2
+theme = ExtResource("1_2kabm")
 script = ExtResource("1_6mjnb")
+level_path = "<null>"
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

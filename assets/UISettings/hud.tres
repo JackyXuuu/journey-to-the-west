@@ -1,7 +1,7 @@
 [gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://dnjaer5ho7516"]
 
-[ext_resource type="FontFile" uid="uid://bt5kj0tsoao5w" path="res://assets/fonts/PixelifySans-Regular.ttf" id="1_ysr02"]
+[ext_resource type="FontFile" uid="uid://bkn00ccekrd62" path="res://assets/fonts/kenney-mini.ttf" id="1_6hc0k"]
 
 [resource]
-font = ExtResource("1_ysr02")
+font = ExtResource("1_6hc0k")
 font_size = 32

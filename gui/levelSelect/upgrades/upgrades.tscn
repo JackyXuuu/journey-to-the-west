@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://cmkmhf37koh04"]
+[gd_scene load_steps=3 format=3 uid="uid://cmkmhf37koh04"]
 
 [ext_resource type="Script" path="res://gui/levelSelect/upgrades/upgrades.gd" id="1_mdgfr"]
+[ext_resource type="Theme" uid="uid://bligd2c1rejkj" path="res://assets/UISettings/button.tres" id="2_1suh7"]
 
 [node name="Upgrades" type="Control"]
 layout_mode = 3
@@ -36,6 +37,7 @@ grow_vertical = 2
 
 [node name="UpgradeWukongAttack" type="Button" parent="ColorRect/HBoxContainer"]
 layout_mode = 2
+theme = ExtResource("2_1suh7")
 text = "Upgrade Wukong
 "
 
@@ -43,6 +45,7 @@ text = "Upgrade Wukong
 layout_mode = 0
 offset_right = 8.0
 offset_bottom = 8.0
+theme = ExtResource("2_1suh7")
 text = "Back
 "
 

@@ -6,15 +6,19 @@
 
 [sub_resource type="Theme" id="Theme_cupnk"]
 
-[node name="Hud" type="Control"]
+[node name="Hud" type="Control" node_paths=PackedStringArray("AllyMob1", "AllyMob2")]
 layout_mode = 3
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -1.0
+offset_right = -1.0
 grow_horizontal = 2
 grow_vertical = 0
 script = ExtResource("1_k8rej")
+AllyMob1 = NodePath("MarginContainer/HBoxContainer/SummonAllyMob1")
+AllyMob2 = NodePath("MarginContainer/HBoxContainer/SummonAllyMob2")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -44,12 +48,21 @@ theme = SubResource("Theme_cupnk")
 icon = ExtResource("1_hxpmd")
 expand_icon = true
 
+[node name="CooldownLabel" type="Label" parent="MarginContainer/HBoxContainer/SummonAllyMob1"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
 [node name="SummonAllyMob2" type="Button" parent="MarginContainer/HBoxContainer"]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 theme = SubResource("Theme_cupnk")
 icon = ExtResource("1_hxpmd")
 expand_icon = true
+
+[node name="CooldownLabel" type="Label" parent="MarginContainer/HBoxContainer/SummonAllyMob2"]
+offset_right = 40.0
+offset_bottom = 23.0
 
 [node name="EssenceTimer" type="Timer" parent="."]
 process_callback = 0

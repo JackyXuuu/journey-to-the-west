@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://c0damj46tohyp"]
+[gd_scene load_steps=4 format=3 uid="uid://c0damj46tohyp"]
 
 [ext_resource type="Script" path="res://gui/menu.gd" id="1_xg5c1"]
+[ext_resource type="LabelSettings" uid="uid://dnjaer5ho7516" path="res://assets/UISettings/hud.tres" id="2_2pnpl"]
+[ext_resource type="Theme" uid="uid://bligd2c1rejkj" path="res://assets/UISettings/button.tres" id="2_sbkog"]
 
 [node name="Menu" type="CanvasLayer"]
 script = ExtResource("1_xg5c1")
@@ -9,11 +11,12 @@ script = ExtResource("1_xg5c1")
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -72.0
-offset_right = 72.0
-offset_bottom = 23.0
+offset_left = -150.0
+offset_right = 150.0
+offset_bottom = 40.0
 grow_horizontal = 2
 text = "Wukong's Odyssey"
+label_settings = ExtResource("2_2pnpl")
 
 [node name="StartGame" type="Button" parent="."]
 anchors_preset = 7
@@ -27,6 +30,7 @@ offset_right = 84.0
 grow_horizontal = 2
 grow_vertical = 0
 size_flags_vertical = 8
+theme = ExtResource("2_sbkog")
 text = "Start New Game"
 
 [node name="ContinueGame" type="Button" parent="."]
