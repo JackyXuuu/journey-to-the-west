@@ -14,6 +14,7 @@ signal health_changed(current_health, max_health)
 
 func _ready():
 	current_health = max_health
+	emit_signal("health_changed", current_health, max_health)
 
 func decrease_health(health_amount):
 	current_health -= health_amount

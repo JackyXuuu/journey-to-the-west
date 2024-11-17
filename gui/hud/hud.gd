@@ -1,15 +1,23 @@
 extends Control
 
+# Healthbar
+@onready var health_bar = $HealthBar
+@onready var health_bar_tween: Tween
+@onready var health_label = $HealthBar/HealthLabel
+
 # Called when the node enters the scene tree for the first time.
 @export var mob_data = {
 	"AllyMob1": {
 		"scene": preload("res://units/ally_mob1.tscn"),
 		"stats": preload("res://resources/ally_mob_1.tres")
 	}, 
+	
+	
 }
 
 @export var AllyMob1: Button
 @export var AllyMob2: Button
+
 
 
 var essence: int = 0
@@ -19,7 +27,6 @@ signal spawn_mob(mob_scene: PackedScene)
 
 func _ready():
 	$EssenceTimer.start()  # Ensure the Timer is set to 1 second in the Inspector
-	print("hello1234")
 
 func _on_pressed(mob_key: String) -> void:
 	if mob_key in mob_data:
@@ -97,3 +104,7 @@ func _update_cooldown(button: Button, timer: Timer):
 			button.get_node("CooldownLabel").visible = false
 		timer.stop()
 		timer.queue_free()
+
+
+func _on_player_health_changed(current_health: Variant, max_health: Variant) -> void:
+	health_bar.update_health_bar(current_health, max_health)

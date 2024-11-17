@@ -7,4 +7,4 @@ var player_stats: EntityStats
 var essence_per_second = 1
 
 func initialize_stats(base_stats: Resource):
-	player_stats = base_stats.duplicate() 
+	player_stats = base_stats.duplicate()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://dx0mgll1wp5eb"]
+[gd_scene load_steps=9 format=3 uid="uid://dx0mgll1wp5eb"]
 
 [ext_resource type="Script" path="res://player/in_game_ui.gd" id="1_o2gs5"]
 [ext_resource type="Script" path="res://player/healthbar_ui.gd" id="2_2bkjw"]
@@ -6,21 +6,55 @@
 
 [sub_resource type="Theme" id="Theme_25m8e"]
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dyuyh"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eby0s"]
+bg_color = Color(0.233823, 0.602786, 0.353194, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i6ksw"]
+bg_color = Color(0.104314, 0.10585, 0.0859689, 1)
+expand_margin_left = 1.0
+expand_margin_top = 1.0
+expand_margin_right = 1.0
+expand_margin_bottom = 1.0
+shadow_color = Color(1, 1, 1, 0.27451)
+shadow_offset = Vector2(0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rv4li"]
+bg_color = Color(1, 1, 1, 1)
+
 [node name="CanvasLayer" type="Control"]
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_o2gs5")
 
-[node name="ProgressBar" type="ProgressBar" parent="."]
+[node name="HealthBar" type="ProgressBar" parent="."]
 layout_mode = 0
-offset_right = 53.0
-offset_bottom = 27.0
+offset_right = 400.0
+offset_bottom = 19.05
+scale = Vector2(0.998938, 1.05026)
 theme = SubResource("Theme_25m8e")
-value = 100.0
+theme_override_styles/background = SubResource("StyleBoxEmpty_dyuyh")
+theme_override_styles/fill = SubResource("StyleBoxFlat_eby0s")
+value = 60.0
+show_percentage = false
 script = ExtResource("2_2bkjw")
 
-[node name="Label" type="Label" parent="ProgressBar"]
+[node name="Label" type="Label" parent="HealthBar"]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 23.0
 label_settings = ExtResource("3_1tose")
+
+[node name="DamageBar" type="ProgressBar" parent="HealthBar"]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_i6ksw")
+theme_override_styles/fill = SubResource("StyleBoxFlat_rv4li")
+value = 60.0
+show_percentage = false

@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+signal health_changed(current_health, max_health)
+
 @export var base_stats: EntityStats
 var stats: EntityStats
 enum States {IDLE, RUNNING, JUMPING, ATTACK}
@@ -17,6 +19,8 @@ var is_controllable := true # if player is currently controllable
 
 func _ready():
 	stats = Global.player_stats
+	stats.connect("health_changed", Callable(self, "_on_stats_health_changed"))
+	_on_stats_health_changed(stats.current_health, stats.max_health)
 	screen_size = get_viewport_rect().size
 	weapon_area.set_meta("owner_stats", stats)
 	print("attack:", stats.attack_damage)
@@ -24,6 +28,13 @@ func _ready():
 	# connects to camera when the mode changes
 	if camera:
 		camera.camera_mode_changed.connect(_on_camera_mode_changed)
+
+func initialize(health_bar_node):
+	stats = Global.player_stats
+	stats.connect("health_changed", Callable(health_bar_node, "_on_health_changed"))
+
+func _on_stats_health_changed(current_health, max_health):
+	emit_signal("health_changed", current_health, max_health)
 
 func _physics_process(delta):
 	if not is_controllable:
@@ -103,3 +114,5 @@ func start(pos):
 func update_player_attack():
 	weapon_area.set_meta("owner_stats", weapon_area.get_meta("Attack Damage") + 10)
 	
+func take_damage(damage: int):
+	stats.decrease_health(damage)
