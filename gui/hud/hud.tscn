@@ -1,33 +1,13 @@
-[gd_scene load_steps=13 format=3 uid="uid://dwe1dpj5ydr26"]
+[gd_scene load_steps=8 format=3 uid="uid://dwe1dpj5ydr26"]
 
 [ext_resource type="Texture2D" uid="uid://c755ofcsu4y0m" path="res://assets/sprites/wukong16bit/run_sprite_1.png" id="1_hxpmd"]
 [ext_resource type="Script" path="res://gui/hud/hud.gd" id="1_k8rej"]
 [ext_resource type="LabelSettings" uid="uid://dnjaer5ho7516" path="res://assets/UISettings/hud.tres" id="2_dhkqu"]
-[ext_resource type="Script" path="res://player/healthbar_ui.gd" id="4_s1c0c"]
+[ext_resource type="PackedScene" uid="uid://day43uk5ccmnq" path="res://gui/health_bar.tscn" id="4_unow1"]
 [ext_resource type="Texture2D" uid="uid://br5ihnhyh5dq6" path="res://assets/avatar border.png" id="5_6fx5m"]
 [ext_resource type="Texture2D" uid="uid://dha77b0wfgd0n" path="res://assets/wukong avatar.webp" id="5_rxao4"]
 
 [sub_resource type="Theme" id="Theme_cupnk"]
-
-[sub_resource type="Theme" id="Theme_3n4jl"]
-
-[sub_resource type="Gradient" id="Gradient_aulc3"]
-colors = PackedColorArray(0.52549, 0.0666667, 0.129412, 1, 0.831373, 0.0705882, 0.145098, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_pk2oo"]
-gradient = SubResource("Gradient_aulc3")
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ycjvb"]
-bg_color = Color(0.104314, 0.10585, 0.0859689, 1)
-expand_margin_left = 3.0
-expand_margin_top = 1.0
-expand_margin_right = 3.0
-expand_margin_bottom = 1.0
-shadow_color = Color(1, 1, 1, 0.27451)
-shadow_offset = Vector2(0, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ia4dk"]
-bg_color = Color(0.909804, 0.909804, 0.909804, 0.682353)
 
 [node name="Hud" type="Control" node_paths=PackedStringArray("AllyMob1", "AllyMob2")]
 layout_mode = 3
@@ -89,43 +69,12 @@ offset_bottom = 23.0
 [node name="EssenceTimer" type="Timer" parent="."]
 process_callback = 0
 
-[node name="HealthBar" type="TextureProgressBar" parent="."]
-z_index = -1
+[node name="HealthBar" parent="." instance=ExtResource("4_unow1")]
 layout_mode = 0
-offset_left = 154.0
-offset_top = 27.0737
-offset_right = 554.0
-offset_bottom = 46.1237
-scale = Vector2(0.76139, 2.89085)
-theme = SubResource("Theme_3n4jl")
-value = 60.0
-nine_patch_stretch = true
-texture_progress = SubResource("GradientTexture1D_pk2oo")
-script = ExtResource("4_s1c0c")
-
-[node name="Label" type="Label" parent="HealthBar"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
-label_settings = ExtResource("2_dhkqu")
-
-[node name="DamageBar" type="ProgressBar" parent="HealthBar"]
-z_index = -1
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.998846, 1)
-theme_override_styles/background = SubResource("StyleBoxFlat_ycjvb")
-theme_override_styles/fill = SubResource("StyleBoxFlat_ia4dk")
-value = 80.0
-show_percentage = false
-
-[node name="Timer" type="Timer" parent="HealthBar"]
-wait_time = 0.4
-one_shot = true
+offset_left = 150.0
+offset_top = 31.0846
+offset_right = 550.0
+offset_bottom = 50.1346
 
 [node name="AvatarBorder" type="Sprite2D" parent="."]
 position = Vector2(93, 83.2266)
@@ -146,4 +95,3 @@ flip_h = true
 [connection signal="pressed" from="MarginContainer/HBoxContainer/SummonAllyMob1" to="." method="_on_pressed" binds= ["AllyMob1"]]
 [connection signal="pressed" from="MarginContainer/HBoxContainer/SummonAllyMob2" to="." method="_on_pressed" binds= ["AllyMob1"]]
 [connection signal="timeout" from="EssenceTimer" to="." method="_on_essence_timer_timeout"]
-[connection signal="timeout" from="HealthBar/Timer" to="HealthBar" method="_on_timer_timeout"]

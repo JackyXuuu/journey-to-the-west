@@ -4,13 +4,21 @@ extends TextureProgressBar
 
 @onready var timer = $Timer
 @onready var damage_bar = $DamageBar
-var player_stats: EntityStats
+var stats: EntityStats
+
+func initialize(stats) -> void:
+	value = stats.current_health
+	max_value = stats.max_health
+	damage_bar.max_value = stats.current_health
+	damage_bar.value = stats.current_health
 
 func update_health_bar(current_health, max_health):
-	# Assuming the health bar uses a ProgressBar
-	var progress_bar = $"."  # Adjust this path as necessary
-	progress_bar.max_value = max_health
-	progress_bar.value = current_health
+	var previous_health = value
+	max_value = max_health
+	value = current_health
+	if value < previous_health:
+		timer.start()
+	
 
 func _on_timer_timeout() -> void:
-	pass # Replace with function body.
+	damage_bar.value = value
