@@ -11,6 +11,8 @@ signal health_changed(current_health, max_health)
 @export var jump_height: int
 @export var summon_cost: int
 @export var cooldown: float
+@export var knockback_force: float = 100
+@export var knockback_duration: float = 0.2
 
 func _ready():
 	current_health = max_health

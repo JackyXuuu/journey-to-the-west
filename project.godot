@@ -64,7 +64,7 @@ attack={
 2d_physics/layer_1="Walls"
 2d_physics/layer_2="Player"
 2d_physics/layer_3="Enemies"
-2d_physics/layer_4="Hitboxes"
+2d_physics/layer_4="Player Attack"
 2d_physics/layer_5="Allies"
 
 [physics]

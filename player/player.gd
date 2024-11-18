@@ -12,10 +12,12 @@ var screen_size
 var input_dir
 var flipped := false
 var is_controllable := true # if player is currently controllable
+var is_knockbacked: bool = false
 @onready var animated_sprite : AnimatedSprite2D = $AnimatedSprite2D
-@onready var camera: Camera2D = $Camera2D  # Adjust the node path to match your scene
+@onready var camera: Camera2D = $Camera2D
 @onready var weapon: CollisionShape2D = $AnimatedSprite2D/StaffHit/CollisionShape2D
 @onready var weapon_area: Area2D = $AnimatedSprite2D/StaffHit
+@onready var knockback_timer: Timer = $KnockbackTimer
 
 func _ready():
 	stats = Global.player_stats
@@ -37,24 +39,34 @@ func _on_stats_health_changed(current_health, max_health):
 	emit_signal("health_changed", current_health, max_health)
 
 func _physics_process(delta):
-	if not is_controllable:
-		velocity.x = 0
-	else:
-		input_dir = Input.get_axis("move_left", "move_right")
-		velocity.x = input_dir * stats.sprint_speed
-	
-	if not is_on_floor():
-		velocity.y += gravity * delta
-	elif state == States.JUMPING:
-		set_player_state(States.IDLE)
-	
-	if is_on_floor() and Input.is_action_just_pressed("jump"):
-		jump()
+	if not is_knockbacked:
+		if not is_controllable:
+			velocity.x = 0
+		else:
+			input_dir = Input.get_axis("move_left", "move_right")
+			velocity.x = input_dir * stats.sprint_speed
+		
+		if not is_on_floor():
+			velocity.y += gravity * delta
+		elif state == States.JUMPING:
+			set_player_state(States.IDLE)
+		
+		if is_on_floor() and Input.is_action_just_pressed("jump"):
+			jump()
 	
 	move_and_slide()
 	update_direction_facing()
 	update_animation()
 	
+func _on_hurtbox_body_entered(area: Area2D) -> void:
+	
+	# Check if the colliding object is aan enemy
+	if area.get_collision_mask_value(Global.ENEMY_LAYER):  # Add enemies to an "enemy" group in the editor
+		if area.has_meta("stats"):
+			var damage = area.get_meta("stats").attack_damage
+			take_damage(damage)
+			apply_knockback(area.global_position)
+
 func _unhandled_input(event):
 	if event.is_action_pressed("attack"):
 		attack()
@@ -80,8 +92,9 @@ func _on_camera_mode_changed(camera_mode: bool):
 
 	
 func attack():
-	weapon.disabled = false
-	set_player_state(States.ATTACK)	
+	if not is_knockbacked:  # Prevent attacking during knockback
+		weapon.disabled = false
+		set_player_state(States.ATTACK)
 	
 	
 func jump():
@@ -113,6 +126,24 @@ func start(pos):
 
 func update_player_attack():
 	weapon_area.set_meta("owner_stats", weapon_area.get_meta("Attack Damage") + 10)
-	
+
+
 func take_damage(damage: int):
 	stats.decrease_health(damage)
+
+func apply_knockback(source_position: Vector2) -> void:
+	print("WALDIJAW??")
+	# Disable the weapon during knockback
+	weapon.disabled = true
+
+	var knockback_direction = sign(global_position.x - source_position.x)
+	velocity.x = knockback_direction * stats.knockback_force
+	is_knockbacked = true
+
+	# Start knockback timer
+	knockback_timer.start(stats.knockback_duration)
+
+func _on_knockback_timeout():
+	is_knockbacked = false
+	velocity.x = 0
+	set_player_state(States.IDLE)

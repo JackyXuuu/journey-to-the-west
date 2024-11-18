@@ -58,7 +58,7 @@ height = 26.0
 [node name="CharacterBody2D" type="CharacterBody2D"]
 scale = Vector2(0.839825, 0.99738)
 collision_layer = 4
-collision_mask = 17
+collision_mask = 19
 script = ExtResource("1_vxwwt")
 base_stats = ExtResource("2_3ru3p")
 metadata/_edit_group_ = true
@@ -69,6 +69,8 @@ animation = &"run"
 flip_h = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1.00263)
+scale = Vector2(0.988489, 0.728313)
 shape = SubResource("CapsuleShape2D_jkf1a")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
@@ -77,6 +79,16 @@ shape = SubResource("CapsuleShape2D_jkf1a")
 
 [node name="RayCastLeft" type="RayCast2D" parent="."]
 
+[node name="Hurtbox" type="Area2D" parent="."]
+position = Vector2(0, 1.00263)
+scale = Vector2(0.834277, 0.629963)
+collision_layer = 4
+collision_mask = 24
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+scale = Vector2(0.945436, 1.10527)
+shape = SubResource("CapsuleShape2D_3ef2s")
+
 [node name="HealthBar" parent="." instance=ExtResource("11_1ubip")]
 offset_left = -11.9072
 offset_top = -14.0368
@@ -84,12 +96,13 @@ offset_right = 388.093
 offset_bottom = 5.01322
 scale = Vector2(0.0627621, 0.14558)
 
-[node name="Hurtbox" type="Area2D" parent="."]
-collision_layer = 0
-collision_mask = 8
+[node name="HealthBarTimer" type="Timer" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
-shape = SubResource("CapsuleShape2D_3ef2s")
+[node name="KnockbackTimer" type="Timer" parent="."]
+wait_time = 0.3
+one_shot = true
 
 [connection signal="health_changed" from="." to="HealthBar" method="update_health_bar"]
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
+[connection signal="timeout" from="HealthBarTimer" to="." method="_on_health_bar_timer_timeout"]
+[connection signal="timeout" from="KnockbackTimer" to="." method="_on_knockback_timer_timeout"]

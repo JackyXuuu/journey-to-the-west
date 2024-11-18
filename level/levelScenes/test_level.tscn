@@ -176,7 +176,7 @@ wait_time = 2.0
 one_shot = true
 
 [node name="MobTimer" type="Timer" parent="."]
-wait_time = 0.5
+wait_time = 2.0
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 layer = -1
