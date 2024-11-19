@@ -65,7 +65,7 @@ func _on_pressed(mob_key: String) -> void:
 		print("Invalid mob key")
 		
 func update_essence_display():
-	$MarginContainer/HBoxContainer/EssenceLabel.text = "x " + str(essence)  # Display essence on a label
+	$EssenceLabel.text = "x " + str(essence)  # Display essence on a label
 
 func _on_essence_timer_timeout() -> void:
 	essence += Global.essence_per_second

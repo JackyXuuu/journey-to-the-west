@@ -21,26 +21,34 @@ script = ExtResource("1_k8rej")
 AllyMob1 = NodePath("MarginContainer/HBoxContainer/SummonAllyMob1")
 AllyMob2 = NodePath("MarginContainer/HBoxContainer/SummonAllyMob2")
 
+[node name="EssenceLabel" type="Label" parent="."]
+layout_mode = 2
+offset_left = 171.0
+offset_top = 90.2458
+offset_right = 244.0
+offset_bottom = 130.246
+scale = Vector2(1.36238, 1.36238)
+text = "x 00"
+label_settings = ExtResource("2_dhkqu")
+
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -40.0
+offset_left = 53.0
+offset_top = -145.632
+offset_right = -272.0
+offset_bottom = -45.6321
 grow_horizontal = 2
 grow_vertical = 0
-scale = Vector2(0.997572, 0.998297)
+scale = Vector2(1.19568, 1.19655)
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
 layout_mode = 2
-size_flags_horizontal = 4
+size_flags_horizontal = 0
 size_flags_vertical = 4
-
-[node name="EssenceLabel" type="Label" parent="MarginContainer/HBoxContainer"]
-layout_mode = 2
-text = "x 00"
-label_settings = ExtResource("2_dhkqu")
 
 [node name="SummonAllyMob1" type="Button" parent="MarginContainer/HBoxContainer"]
 custom_minimum_size = Vector2(100, 100)
@@ -51,8 +59,9 @@ expand_icon = true
 
 [node name="CooldownLabel" type="Label" parent="MarginContainer/HBoxContainer/SummonAllyMob1"]
 layout_mode = 0
+offset_top = 4.512
 offset_right = 40.0
-offset_bottom = 23.0
+offset_bottom = 27.512
 
 [node name="Label" type="Label" parent="MarginContainer/HBoxContainer/SummonAllyMob1"]
 layout_mode = 0
@@ -72,8 +81,9 @@ expand_icon = true
 
 [node name="CooldownLabel" type="Label" parent="MarginContainer/HBoxContainer/SummonAllyMob2"]
 layout_mode = 0
+offset_top = 4.512
 offset_right = 40.0
-offset_bottom = 23.0
+offset_bottom = 27.512
 scale = Vector2(0.98905, 1.0027)
 
 [node name="Label" type="Label" parent="MarginContainer/HBoxContainer/SummonAllyMob2"]
