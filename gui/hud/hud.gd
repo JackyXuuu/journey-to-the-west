@@ -2,17 +2,22 @@ extends Control
 
 # Healthbar
 @onready var health_bar = $HealthBar
-@onready var health_bar_tween: Tween
 @onready var health_label = $HealthBar/HealthLabel
 
 # Called when the node enters the scene tree for the first time.
-@export var mob_data = {
+@onready var mob_data = {
 	"AllyMob1": {
 		"scene": preload("res://units/ally_mob1.tscn"),
-		"stats": preload("res://resources/ally_mob_1.tres")
-	}, 
-	
-	
+		"stats": preload("res://resources/ally_mob_1.tres"),
+		"button": $"MarginContainer/HBoxContainer/AllyMob1",
+		"key": "ally_mob1"  # Custom input action
+	},
+	"AllyMob2": {
+		"scene": preload("res://units/ally_mob1.tscn"),
+		"stats": preload("res://resources/ally_mob_1.tres"),
+		"button": $"MarginContainer/HBoxContainer/AllyMob2",
+		"key": "ally_mob2"  # Custom input action
+	},
 }
 
 @export var AllyMob1: Button
@@ -27,6 +32,20 @@ signal spawn_mob(mob_scene: PackedScene)
 
 func _ready():
 	$EssenceTimer.start()  # Ensure the Timer is set to 1 second in the Inspector
+	
+	# Connect button press signals for all mobs in mob_data
+	for button in get_tree().get_nodes_in_group("mob_buttons"):
+		var mob_key = button.name  # Assume button name matches mob_key
+		if mob_key in mob_data:
+			mob_data[mob_key]["button"] = button  # Store the button instance
+			button.pressed.connect(Callable(self, "_on_pressed").bind(mob_key))
+
+func _process(delta: float) -> void:
+	# Listen for key presses
+	for mob_key in mob_data.keys():
+		var key_event = mob_data[mob_key]["key"]
+		if Input.is_action_just_pressed(key_event):
+			_on_pressed(mob_key)
 
 func _on_pressed(mob_key: String) -> void:
 	if mob_key in mob_data:

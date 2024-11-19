@@ -10,7 +10,7 @@ func initialize(stats) -> void:
 	value = stats.current_health
 	max_value = stats.max_health
 	damage_bar.max_value = stats.current_health
-	damage_bar.value = stats.current_health
+	damage_bar.value = stats.current_health - 1
 
 func update_health_bar(current_health, max_health):
 	var previous_health = value
@@ -21,4 +21,4 @@ func update_health_bar(current_health, max_health):
 	
 
 func _on_timer_timeout() -> void:
-	damage_bar.value = value
+	damage_bar.value = value-1

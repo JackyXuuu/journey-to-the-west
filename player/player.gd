@@ -51,8 +51,8 @@ func _physics_process(delta):
 		elif state == States.JUMPING:
 			set_player_state(States.IDLE)
 		
-		if is_on_floor() and Input.is_action_just_pressed("jump"):
-			jump()
+		#if is_on_floor() and Input.is_action_just_pressed("jump"):
+			#jump()
 	
 	move_and_slide()
 	update_direction_facing()
@@ -79,8 +79,8 @@ func set_player_state(new_state: int) -> void:
 	# Here, I check the new state.
 	elif state == States.ATTACK:
 		animated_sprite.play("attack0")
-	elif state == States.JUMPING:
-		animated_sprite.play("jump")
+	#elif state == States.JUMPING:
+		#animated_sprite.play("jump")
 	elif state == States.RUNNING:
 		animated_sprite.play("run")
 
@@ -134,7 +134,7 @@ func take_damage(damage: int):
 func apply_knockback(source_position: Vector2) -> void:
 	print("WALDIJAW??")
 	# Disable the weapon during knockback
-	weapon.disabled = true
+	weapon.call_deferred("set_disabled", true)
 
 	var knockback_direction = sign(global_position.x - source_position.x)
 	velocity.x = knockback_direction * stats.knockback_force

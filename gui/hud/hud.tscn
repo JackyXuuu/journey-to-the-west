@@ -54,6 +54,15 @@ layout_mode = 0
 offset_right = 40.0
 offset_bottom = 23.0
 
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/SummonAllyMob1"]
+layout_mode = 0
+offset_left = 77.4263
+offset_top = 4.51214
+offset_right = 117.426
+offset_bottom = 27.5121
+theme_override_colors/font_color = Color(0.550958, 0.550959, 0.550958, 1)
+text = "1"
+
 [node name="SummonAllyMob2" type="Button" parent="MarginContainer/HBoxContainer"]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
@@ -65,6 +74,15 @@ expand_icon = true
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 23.0
+scale = Vector2(0.98905, 1.0027)
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/SummonAllyMob2"]
+offset_left = 77.6794
+offset_top = 4.51214
+offset_right = 117.679
+offset_bottom = 27.5121
+theme_override_colors/font_color = Color(0.550958, 0.550959, 0.550958, 1)
+text = "2"
 
 [node name="EssenceTimer" type="Timer" parent="."]
 process_callback = 0
