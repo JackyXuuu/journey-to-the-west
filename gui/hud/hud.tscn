@@ -40,7 +40,7 @@ anchor_bottom = 1.0
 offset_left = 53.0
 offset_top = -145.632
 offset_right = -272.0
-offset_bottom = -45.6321
+offset_bottom = -45.632
 grow_horizontal = 2
 grow_vertical = 0
 scale = Vector2(1.19568, 1.19655)
@@ -59,9 +59,10 @@ expand_icon = true
 
 [node name="CooldownLabel" type="Label" parent="MarginContainer/HBoxContainer/SummonAllyMob1"]
 layout_mode = 0
-offset_top = 4.512
-offset_right = 40.0
-offset_bottom = 27.512
+offset_left = 7.52709
+offset_top = 4.19007
+offset_right = 47.5271
+offset_bottom = 27.1901
 
 [node name="Label" type="Label" parent="MarginContainer/HBoxContainer/SummonAllyMob1"]
 layout_mode = 0
@@ -81,12 +82,14 @@ expand_icon = true
 
 [node name="CooldownLabel" type="Label" parent="MarginContainer/HBoxContainer/SummonAllyMob2"]
 layout_mode = 0
-offset_top = 4.512
-offset_right = 40.0
-offset_bottom = 27.512
+offset_left = 8.07006
+offset_top = 4.19007
+offset_right = 48.0701
+offset_bottom = 27.1901
 scale = Vector2(0.98905, 1.0027)
 
 [node name="Label" type="Label" parent="MarginContainer/HBoxContainer/SummonAllyMob2"]
+layout_mode = 0
 offset_left = 77.6794
 offset_top = 4.51214
 offset_right = 117.679
