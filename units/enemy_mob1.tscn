@@ -1,25 +1,25 @@
-[gd_scene load_steps=16 format=3 uid="uid://d0sxlok03prqf"]
+[gd_scene load_steps=17 format=3 uid="uid://d0sxlok03prqf"]
 
 [ext_resource type="Script" path="res://units/enemy_mob.gd" id="1_vxwwt"]
 [ext_resource type="Resource" uid="uid://b8whi3rsvjaf1" path="res://resources/enemy_stats.tres" id="2_3ru3p"]
-[ext_resource type="Texture2D" uid="uid://v4xmklobd1bl" path="res://assets/enemies/basic_enemy_1_processed.png" id="3_xhvgk"]
 [ext_resource type="Texture2D" uid="uid://v4xmklobd1bl" path="res://assets/enemies/basic_enemy_1_processed.png" id="4_vfuwk"]
+[ext_resource type="Script" path="res://player/staff_hit.gd" id="5_uupij"]
 [ext_resource type="PackedScene" uid="uid://day43uk5ccmnq" path="res://gui/health_bar.tscn" id="11_1ubip"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_aonth"]
-atlas = ExtResource("3_xhvgk")
+atlas = ExtResource("4_vfuwk")
 region = Rect2(0, 2, 30, 36)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hsg66"]
-atlas = ExtResource("3_xhvgk")
+atlas = ExtResource("4_vfuwk")
 region = Rect2(31, 2, 31, 36)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8ei4h"]
-atlas = ExtResource("3_xhvgk")
+atlas = ExtResource("4_vfuwk")
 region = Rect2(63, 2, 31, 36)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ay8tb"]
-atlas = ExtResource("3_xhvgk")
+atlas = ExtResource("4_vfuwk")
 region = Rect2(94, 2, 34, 36)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ewelj"]
@@ -49,8 +49,19 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ay8tb")
 }],
-"loop": true,
+"loop": false,
 "name": &"attack",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ewelj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_648nl")
+}],
+"loop": true,
+"name": &"idle",
 "speed": 5.0
 }, {
 "frames": [{
@@ -68,13 +79,18 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5l6oy"]
+size = Vector2(11.1223, 27.3997)
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jkf1a"]
-radius = 7.0
-height = 26.0
+radius = 13.2505
+height = 46.8058
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3ef2s"]
+radius = 21.1347
+height = 54.7192
 
-[node name="CharacterBody2D" type="CharacterBody2D"]
+[node name="EnemyMob1" type="CharacterBody2D"]
 scale = Vector2(0.839825, 0.99738)
 collision_layer = 4
 collision_mask = 19
@@ -85,35 +101,43 @@ metadata/_edit_group_ = true
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(1.09526, 1)
 sprite_frames = SubResource("SpriteFrames_od5dt")
-animation = &"run"
+animation = &"attack"
 autoplay = "run"
+frame = 3
+frame_progress = 1.0
+
+[node name="HitBox" type="Area2D" parent="AnimatedSprite2D"]
+scale = Vector2(0.913025, 1)
+collision_layer = 32
+collision_mask = 0
+script = ExtResource("5_uupij")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/HitBox"]
+position = Vector2(-15.4794, 0)
+scale = Vector2(1.08082, 1.24546)
+shape = SubResource("RectangleShape2D_5l6oy")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 1.00263)
 scale = Vector2(0.988489, 0.728313)
 shape = SubResource("CapsuleShape2D_jkf1a")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 
-[node name="RayCastRight" type="RayCast2D" parent="."]
-
-[node name="RayCastLeft" type="RayCast2D" parent="."]
-
-[node name="Hurtbox" type="Area2D" parent="."]
-position = Vector2(0, 1.00263)
+[node name="HurtBox" type="Area2D" parent="."]
 scale = Vector2(0.834277, 0.629963)
-collision_layer = 4
-collision_mask = 24
+collision_layer = 0
+collision_mask = 8
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
 scale = Vector2(0.945436, 1.10527)
 shape = SubResource("CapsuleShape2D_3ef2s")
+debug_color = Color(0.83589, 0.300212, 0.628555, 0.42)
 
 [node name="HealthBar" parent="." instance=ExtResource("11_1ubip")]
 offset_left = -11.9072
-offset_top = -14.0368
+offset_top = -23.0604
 offset_right = 388.093
-offset_bottom = 5.01322
+offset_bottom = -4.0104
 scale = Vector2(0.0627621, 0.14558)
 
 [node name="HealthBarTimer" type="Timer" parent="."]
@@ -123,6 +147,9 @@ wait_time = 0.3
 one_shot = true
 
 [connection signal="health_changed" from="." to="HealthBar" method="update_health_bar"]
-[connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="area_entered" from="AnimatedSprite2D/HitBox" to="." method="_on_hit_box_area_entered"]
+[connection signal="area_exited" from="AnimatedSprite2D/HitBox" to="." method="_on_hit_box_area_exited"]
+[connection signal="area_entered" from="HurtBox" to="." method="_on_hurtbox_area_entered"]
 [connection signal="timeout" from="HealthBarTimer" to="." method="_on_health_bar_timer_timeout"]
 [connection signal="timeout" from="KnockbackTimer" to="." method="_on_knockback_timer_timeout"]

@@ -21,8 +21,8 @@ func _input(event):
 func toggle_camera_mode():
 	set_camera_mode(!is_camera_mode)
 
-func set_camera_mode(enabled: bool):
-	is_camera_mode = enabled
+func set_camera_mode(enabled_status: bool):
+	is_camera_mode = enabled_status
 	if not is_camera_mode:
 		position = Vector2.ZERO
 	camera_mode_changed.emit(is_camera_mode)

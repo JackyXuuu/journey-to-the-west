@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://ydge52gon0gi"]
+[gd_scene load_steps=29 format=3 uid="uid://ydge52gon0gi"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_trmis"]
 [ext_resource type="Texture2D" uid="uid://dhqh0lk50ue32" path="res://assets/wukong16bit/atk wk 3_sprite_1.png" id="2_e6u0u"]
@@ -24,9 +24,6 @@
 [ext_resource type="Texture2D" uid="uid://83uyo8ygqga1" path="res://assets/sprites/wukong16bit/run wk_sprite_4.png" id="21_pie4x"]
 [ext_resource type="Script" path="res://player/camera_manager.gd" id="23_yfkpm"]
 [ext_resource type="Script" path="res://player/staff_hit.gd" id="24_c466t"]
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ym836"]
-radius = 12.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_58t4p"]
 animations = [{
@@ -119,46 +116,50 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_41re4"]
 size = Vector2(6.09455, 17.8261)
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7c7kv"]
+radius = 6.0
+height = 22.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_56vhx"]
+radius = 13.9698
+height = 41.6239
+
 [node name="Player" type="CharacterBody2D"]
-position = Vector2(-1, 0)
 scale = Vector2(1.0067, 0.996922)
 collision_layer = 2
-collision_priority = 0.0
+collision_mask = 5
 script = ExtResource("1_trmis")
 base_stats = ExtResource("2_tyvmh")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(5.88113e-08, 9.02779)
-scale = Vector2(0.398817, 0.0910941)
-shape = SubResource("CapsuleShape2D_ym836")
-
-[node name="Area2D" type="Area2D" parent="."]
-scale = Vector2(0.567666, 0.674767)
-collision_layer = 2
-collision_mask = 5
-
-[node name="HurtBox" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(-1, 0)
-scale = Vector2(1.03802, 1.00742)
-shape = SubResource("CapsuleShape2D_ym836")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(1, 0.990917)
 sprite_frames = SubResource("SpriteFrames_58t4p")
-animation = &"attack0"
+animation = &"idle"
 autoplay = "idle"
 
-[node name="StaffHit" type="Area2D" parent="AnimatedSprite2D"]
+[node name="HitBox" type="Area2D" parent="AnimatedSprite2D"]
 collision_layer = 8
-collision_mask = 5
+collision_mask = 0
 script = ExtResource("24_c466t")
-metadata/_edit_group_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/StaffHit"]
-position = Vector2(12.6, 4.81208e-07)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/HitBox"]
+position = Vector2(12.9135, 5.68434e-14)
 scale = Vector2(1.08082, 1.24546)
 shape = SubResource("RectangleShape2D_41re4")
 disabled = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_7c7kv")
+debug_color = Color(0, 0.582894, 0.789177, 0.42)
+
+[node name="HurtBox" type="Area2D" parent="."]
+scale = Vector2(0.568854, 0.674767)
+collision_layer = 0
+collision_mask = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+shape = SubResource("CapsuleShape2D_56vhx")
+debug_color = Color(0.784382, 0.113387, 1, 0.42)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(37.7471, -6.01853)
@@ -174,8 +175,7 @@ script = ExtResource("23_yfkpm")
 wait_time = 0.3
 one_shot = true
 
-[connection signal="area_entered" from="Area2D" to="." method="_on_hurtbox_body_entered"]
 [connection signal="animation_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_changed"]
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
-[connection signal="body_entered" from="AnimatedSprite2D/StaffHit" to="AnimatedSprite2D/StaffHit" method="_on_body_entered"]
+[connection signal="area_entered" from="HurtBox" to="." method="_on_hurtbox_area_entered"]
 [connection signal="timeout" from="KnockbackTimer" to="." method="_on_knockback_timeout"]

@@ -2,27 +2,25 @@ extends Control
 
 # Healthbar
 @onready var health_bar = $HealthBar
-@onready var health_label = $HealthBar/HealthLabel
 
+
+@export var AllyMob1: Button
+@export var AllyMob2: Button
 # Called when the node enters the scene tree for the first time.
 @onready var mob_data = {
 	"AllyMob1": {
 		"scene": preload("res://units/ally_mob1.tscn"),
 		"stats": preload("res://resources/ally_mob_1.tres"),
-		"button": $"MarginContainer/HBoxContainer/AllyMob1",
+		"button": AllyMob1,
 		"key": "ally_mob1"  # Custom input action
 	},
 	"AllyMob2": {
 		"scene": preload("res://units/ally_mob1.tscn"),
 		"stats": preload("res://resources/ally_mob_1.tres"),
-		"button": $"MarginContainer/HBoxContainer/AllyMob2",
+		"button": AllyMob2,
 		"key": "ally_mob2"  # Custom input action
 	},
 }
-
-@export var AllyMob1: Button
-@export var AllyMob2: Button
-
 
 
 var essence: int = 0
@@ -45,7 +43,9 @@ func _process(_delta: float) -> void:
 	for mob_key in mob_data.keys():
 		var key_event = mob_data[mob_key]["key"]
 		if Input.is_action_just_pressed(key_event):
-			_on_pressed(mob_key)
+			if is_cooldown_over(mob_key):  # Check cooldown
+				_on_pressed(mob_key)
+	
 
 func _on_pressed(mob_key: String) -> void:
 	if mob_key in mob_data:
@@ -79,7 +79,7 @@ func start_cooldown(mob_key: String, cooldown_time: float) -> void:
 		"AllyMob2":
 			button = AllyMob2
 	button.disabled = true
-	cooldowns[button] = cooldown_time
+	cooldowns[mob_key] = cooldown_time
 
 	if button.has_node("CooldownLabel"):
 		var label = button.get_node("CooldownLabel")
@@ -88,14 +88,14 @@ func start_cooldown(mob_key: String, cooldown_time: float) -> void:
 	var cooldown_timer = Timer.new()
 	cooldown_timer.one_shot = false
 	cooldown_timer.wait_time = 0.1
-	cooldown_timer.connect("timeout", Callable(self, "_update_cooldown").bind(button, cooldown_timer))
+	cooldown_timer.timeout.connect(Callable(self, "_update_cooldown").bind(button, cooldown_timer))
 	add_child(cooldown_timer)
 	cooldown_timer.start()
 		# disable button
 
 func is_cooldown_over(mob_key: String) -> bool:
 	if mob_key in cooldowns:
-		return Time.get_ticks_msec() >= cooldowns[mob_key]
+		return cooldowns[mob_key] <= 0
 	return true
 
 func _on_cooldown_complete(button: Button, mob_key: String) -> void:
@@ -105,19 +105,21 @@ func _on_cooldown_complete(button: Button, mob_key: String) -> void:
 		cooldowns.erase(mob_key)
 
 func _update_cooldown(button: Button, timer: Timer):
-	if not button in cooldowns:
+	var mob_key = ""
+	for key in mob_data.keys():
+		if mob_data[key]["button"] == button:
+			mob_key = key
+			break
+	if mob_key == "" or not mob_key in cooldowns:
 		return
-
-	cooldowns[button] -= 0.1
-
+	cooldowns[mob_key] -= 0.1
 	# Update cooldown label
 	if button.has_node("CooldownLabel"):
 		var label = button.get_node("CooldownLabel")
-		label.text = str(ceil(cooldowns[button]))
-
+		label.text = str(ceil(cooldowns[mob_key]))
 	# End cooldown
-	if cooldowns[button] <= 0:
-		cooldowns.erase(button)
+	if cooldowns[mob_key] <= 0:
+		cooldowns.erase(mob_key)
 		button.disabled = false
 		if button.has_node("CooldownLabel"):
 			button.get_node("CooldownLabel").visible = false

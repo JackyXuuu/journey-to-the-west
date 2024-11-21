@@ -17,7 +17,7 @@ var state:States = States.IDLE
 @onready var animated_sprite : AnimatedSprite2D = $AnimatedSprite2D
 @onready var health_bar = $HealthBar
 @onready var health_bar_timer = $HealthBarTimer
-@onready var hitbox = $Hurtbox
+@onready var hitbox = $AnimatedSprite2D/HitBox
 
 func get_stats() -> EntityStats:
 	return stats
@@ -44,7 +44,7 @@ func set_state(new_state: States) -> void:
 		animated_sprite.play("run")
 		
 func _on_health_changed(current_health: float, max_health: float) -> void:
-	emit_signal("health_changed", current_health, max_health)
+	health_changed.emit(current_health, max_health)
 	# Show health bar
 	health_bar.visible = true
 	# Start timer to hide health bar
@@ -62,7 +62,7 @@ func _on_health_bar_timer_timeout() -> void:
 		health_bar.visible = false
 
 func _on_hurtbox_area_entered(area: Area2D) -> void:
-	if area.get_collision_layer() & Global.ENEMY_LAYER != 0:
+	if area.get_collision_layer() & Global.ENEMY_HITBOX != 0:
 		if area.has_meta("stats"):
 			var enemy_attack = area.get_meta("stats").attack_damage
 			stats.decrease_health(enemy_attack)

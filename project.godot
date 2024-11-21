@@ -72,10 +72,11 @@ ally_mob2={
 2d_render/layer_3="Enemies"
 2d_render/layer_4="Allies"
 2d_physics/layer_1="Walls"
-2d_physics/layer_2="Player"
-2d_physics/layer_3="Enemies"
-2d_physics/layer_4="Player Attack"
-2d_physics/layer_5="Allies"
+2d_physics/layer_2="Player Collision"
+2d_physics/layer_3="Enemy Collision"
+2d_physics/layer_4="Player Hitbox"
+2d_physics/layer_5="Ally Collision"
+2d_physics/layer_6="Enemy HitBox"
 
 [physics]
 
