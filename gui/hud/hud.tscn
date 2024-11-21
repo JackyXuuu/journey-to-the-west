@@ -82,9 +82,9 @@ expand_icon = true
 
 [node name="CooldownLabel" type="Label" parent="MarginContainer/HBoxContainer/SummonAllyMob2"]
 layout_mode = 0
-offset_left = 8.07006
+offset_left = 8.90641
 offset_top = 4.19007
-offset_right = 48.0701
+offset_right = 48.9064
 offset_bottom = 27.1901
 scale = Vector2(0.98905, 1.0027)
 
