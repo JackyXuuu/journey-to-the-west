@@ -35,7 +35,7 @@ func _physics_process(_delta):
 	set_state(States.RUNNING)
 	move_and_slide()
 
-func set_state(new_state: int) -> void:
+func set_state(new_state: States) -> void:
 	state = new_state
 	# You can check both the previous and the new state to determine what to do when the state changes. This checks the previous state.
 	if state == States.IDLE:

@@ -25,7 +25,6 @@ func _ready():
 	_on_stats_health_changed(stats.current_health, stats.max_health)
 	screen_size = get_viewport_rect().size
 	weapon_area.set_meta("owner_stats", stats)
-	print("attack:", stats.attack_damage)
 	add_to_group("player")
 	# connects to camera when the mode changes
 	if camera:
@@ -71,7 +70,7 @@ func _unhandled_input(event):
 	if event.is_action_pressed("attack"):
 		attack()
 
-func set_player_state(new_state: int) -> void:
+func set_player_state(new_state: States) -> void:
 	state = new_state
 	# You can check both the previous and the new state to determine what to do when the state changes. This checks the previous state.
 	if state == States.IDLE:
@@ -132,7 +131,6 @@ func take_damage(damage: int):
 	stats.decrease_health(damage)
 
 func apply_knockback(source_position: Vector2) -> void:
-	print("WALDIJAW??")
 	# Disable the weapon during knockback
 	weapon.call_deferred("set_disabled", true)
 

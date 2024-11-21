@@ -40,7 +40,7 @@ func _ready():
 			mob_data[mob_key]["button"] = button  # Store the button instance
 			button.pressed.connect(Callable(self, "_on_pressed").bind(mob_key))
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	# Listen for key presses
 	for mob_key in mob_data.keys():
 		var key_event = mob_data[mob_key]["key"]

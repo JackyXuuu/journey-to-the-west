@@ -4,7 +4,6 @@ extends TextureProgressBar
 
 @onready var timer = $Timer
 @onready var damage_bar = $DamageBar
-var stats: EntityStats
 
 func initialize(stats) -> void:
 	value = stats.current_health

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://units/enemy_mob.gd" id="1_vxwwt"]
 [ext_resource type="Resource" uid="uid://b8whi3rsvjaf1" path="res://resources/enemy_stats.tres" id="2_3ru3p"]
-[ext_resource type="Texture2D" path="res://assets/enemies/basic_enemy_1_transparent_gray.png" id="3_xhvgk"]
+[ext_resource type="Texture2D" uid="uid://v4xmklobd1bl" path="res://assets/enemies/basic_enemy_1_processed.png" id="3_xhvgk"]
 [ext_resource type="Texture2D" uid="uid://v4xmklobd1bl" path="res://assets/enemies/basic_enemy_1_processed.png" id="4_vfuwk"]
 [ext_resource type="PackedScene" uid="uid://day43uk5ccmnq" path="res://gui/health_bar.tscn" id="11_1ubip"]
 
