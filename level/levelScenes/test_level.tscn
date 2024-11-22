@@ -168,7 +168,7 @@ tile_map_data = PackedByteArray("AAD6/wQAAAAAAAAAAAD7/wQAAAAAAAAAAAD8/wQAAAAAAAA
 tile_set = SubResource("TileSet_3xxd2")
 
 [node name="StartPosition" type="Marker2D" parent="."]
-position = Vector2(-148.387, 78.6932)
+position = Vector2(-155.358, 82.7288)
 scale = Vector2(0.995887, 1.00889)
 
 [node name="StartTimer" type="Timer" parent="."]
@@ -177,6 +177,7 @@ one_shot = true
 
 [node name="MobTimer" type="Timer" parent="."]
 wait_time = 2.0
+one_shot = true
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 layer = -1
@@ -191,7 +192,7 @@ scale = Vector2(1.00413, 0.991191)
 texture = ExtResource("5_itn0p")
 
 [node name="MobSpawnLocation" type="Marker2D" parent="."]
-position = Vector2(98.5928, 79.7021)
+position = Vector2(82.6586, 73.6488)
 
 [node name="BackButton" type="Button" parent="."]
 offset_left = -155.358

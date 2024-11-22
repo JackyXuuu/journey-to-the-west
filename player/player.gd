@@ -1,14 +1,12 @@
 extends CharacterBody2D
 
 signal health_changed(current_health, max_health)
-signal enemy_attack_animation
 
 @export var base_stats: EntityStats
 var stats: EntityStats
 enum States {IDLE, RUNNING, JUMPING, ATTACK}
 var state:States = States.IDLE
 var v = Vector2.ZERO
-var gravity = 800
 var screen_size
 var input_dir
 var flipped := false
@@ -46,31 +44,20 @@ func _physics_process(delta):
 			input_dir = Input.get_axis("move_left", "move_right")
 			velocity.x = input_dir * stats.sprint_speed
 		
+		# if in the air 
 		if not is_on_floor():
-			velocity.y += gravity * delta
+			velocity.y += Global.GRAVITY * delta
+		# if on the floor
 		elif state == States.JUMPING:
 			set_player_state(States.IDLE)
 		
-		#if is_on_floor() and Input.is_action_just_pressed("jump"):
-			#jump()
+		if is_on_floor() and Input.is_action_just_pressed("jump"):
+			jump()
 	
 	move_and_slide()
 	update_direction_facing()
 	update_animation()
-	
-func _on_hurtbox_area_entered(area: Area2D) -> void:
-	if area.get_collision_layer() & Global.ENEMY_HITBOX != 0:
-		if area.has_meta("stats"):
-			enemy_attack_animation.emit()
-			var damage = area.get_meta("stats").attack_damage
-			stats.decrease_health(damage)
-			apply_knockback(area.global_position)
-			# call enemy attack animation
-		if area.has_meta("parent"):
-			var enemy = area.get_meta("parent")
-			if enemy.has_method("play_attack_animation"):
-				enemy.play_attack_animation()
-	
+
 func _unhandled_input(event):
 	if event.is_action_pressed("attack"):
 		attack()
@@ -83,8 +70,8 @@ func set_player_state(new_state: States) -> void:
 	# Here, I check the new state.
 	elif state == States.ATTACK:
 		animated_sprite.play("attack0")
-	#elif state == States.JUMPING:
-		#animated_sprite.play("jump")
+	elif state == States.JUMPING:
+		animated_sprite.play("jump")
 	elif state == States.RUNNING:
 		animated_sprite.play("run")
 	
@@ -98,6 +85,7 @@ func attack():
 	if not is_knockbacked:  # Prevent attacking during knockback
 		weapon.disabled = false
 		set_player_state(States.ATTACK)
+
 	
 func jump():
 	velocity.y = -stats.jump_height
@@ -142,3 +130,14 @@ func _on_knockback_timeout():
 	is_knockbacked = false
 	velocity.x = 0
 	set_player_state(States.IDLE)
+
+func receive_attack(damage: int) -> void:
+	stats.decrease_health(damage)
+	print("Player hit!")
+
+func _on_hit_box_area_entered(area: Area2D) -> void:
+	if area.get_collision_layer() & Global.ENEMY_LAYER != 0:
+		var attack_target = area.get_parent()
+		if attack_target and attack_target.has_method("receive_attack"):
+			attack_target.receive_attack(stats.attack_damage)
+			attack_target.apply_knockback(global_position)

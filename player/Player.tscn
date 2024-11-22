@@ -127,7 +127,6 @@ height = 41.6239
 [node name="Player" type="CharacterBody2D"]
 scale = Vector2(1.0067, 0.996922)
 collision_layer = 2
-collision_mask = 5
 script = ExtResource("1_trmis")
 base_stats = ExtResource("2_tyvmh")
 
@@ -138,12 +137,12 @@ animation = &"idle"
 autoplay = "idle"
 
 [node name="HitBox" type="Area2D" parent="AnimatedSprite2D"]
-collision_layer = 8
-collision_mask = 0
+collision_layer = 0
+collision_mask = 4
 script = ExtResource("24_c466t")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/HitBox"]
-position = Vector2(12.9135, 5.68434e-14)
+position = Vector2(12.9135, 0)
 scale = Vector2(1.08082, 1.24546)
 shape = SubResource("RectangleShape2D_41re4")
 disabled = true
@@ -154,8 +153,8 @@ debug_color = Color(0, 0.582894, 0.789177, 0.42)
 
 [node name="HurtBox" type="Area2D" parent="."]
 scale = Vector2(0.568854, 0.674767)
-collision_layer = 0
-collision_mask = 32
+collision_layer = 2
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
 shape = SubResource("CapsuleShape2D_56vhx")
@@ -175,7 +174,7 @@ script = ExtResource("23_yfkpm")
 wait_time = 0.3
 one_shot = true
 
-[connection signal="animation_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_changed"]
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="area_entered" from="AnimatedSprite2D/HitBox" to="." method="_on_hit_box_area_entered"]
 [connection signal="area_entered" from="HurtBox" to="." method="_on_hurtbox_area_entered"]
 [connection signal="timeout" from="KnockbackTimer" to="." method="_on_knockback_timeout"]

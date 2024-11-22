@@ -7,6 +7,7 @@ const ENEMY_LAYER = 1 << 2
 const PLAYER_ATTACK_LAYER = 1 << 3
 const ALLY_LAYER = 1 << 4
 const ENEMY_HITBOX = 1 << 5
+const GRAVITY = 800
 var player_stats: EntityStats
 var essence_per_second = 5
 

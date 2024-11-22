@@ -9,7 +9,7 @@ extends Control
 # Called when the node enters the scene tree for the first time.
 @onready var mob_data = {
 	"AllyMob1": {
-		"scene": preload("res://units/ally_mob1.tscn"),
+		"scene": preload("res://units/ally_mob.tscn"),
 		"stats": preload("res://resources/ally_mob_1.tres"),
 		"button": AllyMob1,
 		"key": "ally_mob1"  # Custom input action

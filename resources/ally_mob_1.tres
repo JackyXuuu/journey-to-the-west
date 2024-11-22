@@ -14,3 +14,4 @@ summon_cost = 5
 cooldown = 5.0
 knockback_force = 100.0
 knockback_duration = 0.2
+attack_cooldown = 1.5

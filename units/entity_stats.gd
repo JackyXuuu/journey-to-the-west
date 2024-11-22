@@ -13,6 +13,8 @@ signal health_changed(current_health, max_health)
 @export var cooldown: float
 @export var knockback_force: float = 100
 @export var knockback_duration: float = 0.2
+@export var attack_cooldown: float = 1.5
+
 
 func _ready():
 	current_health = max_health
