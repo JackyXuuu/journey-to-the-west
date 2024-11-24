@@ -122,8 +122,8 @@ func _on_knockback_timer_timeout() -> void:
 
 func _on_animated_sprite_2d_animation_finished() -> void:
 	if state == States.DYING:
-		print("Death animation finished. Freeing enemy.")
 		queue_free()
+		Global.increase_gold(base_stats.gold_given)
 	else:
 		set_state(States.RUNNING)
 
@@ -149,7 +149,7 @@ func _on_detection_zone_area_exited(area: Area2D):
 	if area.get_collision_layer() & Global.PLAYER_LAYER != 0:
 		target = null
 		is_chasing = false
-		
+
 func receive_attack(damage: int) -> void:
 	stats.decrease_health(damage)
 

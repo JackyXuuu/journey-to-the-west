@@ -19,4 +19,18 @@ func grow_btn(end_size: Vector2, duration: float) -> void:
 func _on_button_pressed():
 	if level_path == null:
 		return
-	get_tree().change_scene_to_file(level_path)
+		
+	var level_scene = ResourceLoader.load(level_path)
+	if level_scene is PackedScene:
+		# Instance the level
+		var level_instance = level_scene.instantiate()
+		# Get the current active scene
+		var current_scene = get_tree().get_current_scene()
+
+		# Remove the current scene from the tree
+		if current_scene:
+			current_scene.queue_free()
+
+		# Add the new level instance to the scene tree and set it as the current scene
+		get_tree().root.add_child(level_instance)
+		get_tree().set_current_scene(level_instance)

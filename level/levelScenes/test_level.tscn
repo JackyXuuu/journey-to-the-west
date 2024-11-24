@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=4 uid="uid://dpam0xn0prbdy"]
 
 [ext_resource type="Script" path="res://level/test_level.gd" id="1_lkkhn"]
-[ext_resource type="PackedScene" uid="uid://bcllpnc8g0ukd" path="res://units/enemy_mob3.tscn" id="2_uwvl0"]
+[ext_resource type="PackedScene" uid="uid://d0sxlok03prqf" path="res://units/enemy_mob1.tscn" id="2_ggwt4"]
 [ext_resource type="PackedScene" uid="uid://ydge52gon0gi" path="res://player/player.tscn" id="3_xesli"]
 [ext_resource type="Texture2D" uid="uid://b8wpe2ty1bb4y" path="res://assets/sprites/world_tileset.png" id="4_dajc7"]
 [ext_resource type="Texture2D" uid="uid://d0l55kn4w8wku" path="res://assets/backgrounds/level1background.png" id="5_itn0p"]
@@ -147,7 +147,7 @@ sources/0 = SubResource("TileSetAtlasSource_rrnrn")
 [node name="TestLevel" type="Node2D"]
 scale = Vector2(1.00413, 0.991191)
 script = ExtResource("1_lkkhn")
-mob_scene = ExtResource("2_uwvl0")
+mob_scene = ExtResource("2_ggwt4")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -168,7 +168,7 @@ tile_map_data = PackedByteArray("AAD6/wQAAAAAAAAAAAD7/wQAAAAAAAAAAAD8/wQAAAAAAAA
 tile_set = SubResource("TileSet_3xxd2")
 
 [node name="StartPosition" type="Marker2D" parent="."]
-position = Vector2(-155.358, 82.7288)
+position = Vector2(-155.358, 78.6932)
 scale = Vector2(0.995887, 1.00889)
 
 [node name="StartTimer" type="Timer" parent="."]
@@ -203,6 +203,7 @@ text = "back"
 
 [connection signal="spawn_mob" from="CanvasLayer/Hud" to="." method="_on_hud_spawn_ally_mob"]
 [connection signal="health_changed" from="Player" to="CanvasLayer/Hud" method="_on_player_health_changed"]
+[connection signal="player_died" from="Player" to="." method="on_player_died"]
 [connection signal="timeout" from="StartTimer" to="." method="_on_start_timer_timeout"]
 [connection signal="timeout" from="MobTimer" to="." method="_on_mob_timer_timeout"]
 [connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]

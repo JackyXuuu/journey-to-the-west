@@ -1,11 +1,10 @@
-[gd_scene load_steps=9 format=4 uid="uid://6bsqeqdjxver"]
+[gd_scene load_steps=8 format=4 uid="uid://6bsqeqdjxver"]
 
 [ext_resource type="Script" path="res://level/test_level.gd" id="1_66vbp"]
 [ext_resource type="PackedScene" uid="uid://d0sxlok03prqf" path="res://units/enemy_mob1.tscn" id="2_prrwv"]
 [ext_resource type="PackedScene" uid="uid://dwe1dpj5ydr26" path="res://gui/hud/hud.tscn" id="3_048hj"]
 [ext_resource type="PackedScene" uid="uid://ydge52gon0gi" path="res://player/player.tscn" id="4_8tq0v"]
 [ext_resource type="Texture2D" uid="uid://b8wpe2ty1bb4y" path="res://assets/sprites/world_tileset.png" id="5_7r7yu"]
-[ext_resource type="Texture2D" uid="uid://brmgoolej056i" path="res://assets/backgrounds/xOWRPX.png" id="6_7i4mc"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rrnrn"]
 texture = ExtResource("5_7r7yu")
@@ -188,21 +187,11 @@ motion_mirroring = Vector2(544, 0)
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
 position = Vector2(40, -5)
 scale = Vector2(1.00413, 0.991191)
-texture = ExtResource("6_7i4mc")
 
 [node name="MobSpawnLocation" type="Marker2D" parent="."]
 position = Vector2(82.6586, 73.6488)
-
-[node name="BackButton" type="Button" parent="."]
-offset_left = -155.358
-offset_top = 4.03555
-offset_right = -110.359
-offset_bottom = 35.0355
-scale = Vector2(0.991327, 1)
-text = "back"
 
 [connection signal="spawn_mob" from="CanvasLayer/Hud" to="." method="_on_hud_spawn_ally_mob"]
 [connection signal="health_changed" from="Player" to="CanvasLayer/Hud" method="_on_player_health_changed"]
 [connection signal="timeout" from="StartTimer" to="." method="_on_start_timer_timeout"]
 [connection signal="timeout" from="MobTimer" to="." method="_on_mob_timer_timeout"]
-[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]

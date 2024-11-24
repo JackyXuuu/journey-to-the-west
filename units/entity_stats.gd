@@ -15,6 +15,10 @@ signal health_changed(current_health, max_health)
 @export var knockback_duration: float = 0.2
 @export var attack_cooldown: float = 1.5
 @export var gold_given: int = 10
+@export var attack_increase_per_upgrade: int = 1
+@export var upgrade_cost: int = 10
+@export var upgrade_level: int = 0
+
 
 func _ready():
 	current_health = max_health

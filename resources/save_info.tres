@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="SaveInfo" load_steps=2 format=3 uid="uid://dh5skinvq1y6l"]
+
+[ext_resource type="Script" path="res://units/save_info.gd" id="1_4ddsj"]
+
+[resource]
+script = ExtResource("1_4ddsj")
+level = 0
+gold = 10

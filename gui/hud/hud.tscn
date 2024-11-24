@@ -1,11 +1,17 @@
-[gd_scene load_steps=8 format=3 uid="uid://dwe1dpj5ydr26"]
+[gd_scene load_steps=11 format=3 uid="uid://dwe1dpj5ydr26"]
 
 [ext_resource type="Texture2D" uid="uid://c755ofcsu4y0m" path="res://assets/sprites/wukong16bit/run_sprite_1.png" id="1_hxpmd"]
 [ext_resource type="Script" path="res://gui/hud/hud.gd" id="1_k8rej"]
-[ext_resource type="LabelSettings" uid="uid://dnjaer5ho7516" path="res://assets/UISettings/hud.tres" id="2_dhkqu"]
+[ext_resource type="FontFile" uid="uid://bkn00ccekrd62" path="res://assets/fonts/kenney-mini.ttf" id="2_ort2m"]
 [ext_resource type="PackedScene" uid="uid://day43uk5ccmnq" path="res://gui/health_bar.tscn" id="4_unow1"]
 [ext_resource type="Texture2D" uid="uid://br5ihnhyh5dq6" path="res://assets/UISettings/avatar border.png" id="5_6fx5m"]
 [ext_resource type="Texture2D" uid="uid://dr3q0ofmbpqkq" path="res://assets/UISettings/311-3118801_swk-sun-wukong-pixel-art.png" id="6_4gbl0"]
+[ext_resource type="Theme" uid="uid://bligd2c1rejkj" path="res://assets/UISettings/button.tres" id="7_bepox"]
+[ext_resource type="Script" path="res://gui/hud/pause_menu.gd" id="7_ydhdn"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_oh4ae"]
+font = ExtResource("2_ort2m")
+font_size = 40
 
 [sub_resource type="Theme" id="Theme_cupnk"]
 
@@ -30,13 +36,14 @@ offset_bottom = 1069.34
 
 [node name="EssenceLabel" type="Label" parent="."]
 layout_mode = 2
-offset_left = 217.0
-offset_top = 76.2075
-offset_right = 302.0
-offset_bottom = 126.208
+offset_left = 172.0
+offset_top = 73.1993
+offset_right = 278.0
+offset_bottom = 136.199
 scale = Vector2(1.36238, 1.36238)
+theme_override_font_sizes/font_size = 30
 text = "x 00"
-label_settings = ExtResource("2_dhkqu")
+label_settings = SubResource("LabelSettings_oh4ae")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -130,6 +137,62 @@ texture = ExtResource("6_4gbl0")
 expand_mode = 1
 flip_h = true
 
+[node name="PauseMenu" type="MenuBar" parent="."]
+process_mode = 2
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.499734
+anchor_right = 0.5
+anchor_bottom = 0.499734
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("7_ydhdn")
+metadata/_edit_use_anchors_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PauseMenu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -81.5
+offset_top = -60.0
+offset_right = 81.5
+offset_bottom = 60.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ResumeButton" type="Button" parent="PauseMenu/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("7_bepox")
+text = "Resume
+"
+
+[node name="MenuButton" type="Button" parent="PauseMenu/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("7_bepox")
+text = "Menu
+"
+
+[node name="SettingsButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 917.0
+offset_top = 24.0655
+offset_right = 1100.0
+offset_bottom = 82.0655
+theme = ExtResource("7_bepox")
+text = "Settings"
+
 [connection signal="pressed" from="MarginContainer/HBoxContainer/SummonAllyMob1" to="." method="_on_pressed" binds= ["AllyMob1"]]
 [connection signal="pressed" from="MarginContainer/HBoxContainer/SummonAllyMob2" to="." method="_on_pressed" binds= ["AllyMob1"]]
 [connection signal="timeout" from="EssenceTimer" to="." method="_on_essence_timer_timeout"]
+[connection signal="pressed" from="PauseMenu/VBoxContainer/ResumeButton" to="PauseMenu" method="_on_close_button_pressed"]
+[connection signal="pressed" from="PauseMenu/VBoxContainer/MenuButton" to="PauseMenu" method="_on_menu_button_pressed"]
+[connection signal="pressed" from="SettingsButton" to="PauseMenu" method="_on_settings_button_pressed"]

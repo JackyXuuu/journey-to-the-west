@@ -64,24 +64,20 @@ scale = Vector2(1, 1.01029)
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/MenuOptions"]
 layout_mode = 2
+size_flags_horizontal = 4
 
-[node name="SaveGameButton" type="Button" parent="CanvasLayer/MenuOptions/HBoxContainer"]
+[node name="SaveButton" type="Button" parent="CanvasLayer/MenuOptions/HBoxContainer"]
 layout_mode = 2
 theme = ExtResource("3_wlahu")
-text = "Save Game
-"
+text = "Save Game"
 
 [node name="UpgradesButton" type="Button" parent="CanvasLayer/MenuOptions/HBoxContainer"]
 layout_mode = 2
+size_flags_vertical = 0
 theme = ExtResource("3_wlahu")
 text = "Upgrades
 "
 script = ExtResource("1_27jbw")
 
-[node name="ControlsButton" type="Button" parent="CanvasLayer/MenuOptions/HBoxContainer"]
-layout_mode = 2
-theme = ExtResource("3_wlahu")
-text = "Controls
-"
-
+[connection signal="pressed" from="CanvasLayer/MenuOptions/HBoxContainer/SaveButton" to="." method="_on_save_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/MenuOptions/HBoxContainer/UpgradesButton" to="CanvasLayer/MenuOptions/HBoxContainer/UpgradesButton" method="_on_pressed"]

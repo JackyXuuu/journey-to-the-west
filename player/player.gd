@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 signal health_changed(current_health, max_health)
+signal player_died
 
 @export var base_stats: EntityStats
 var stats: EntityStats
@@ -20,9 +21,9 @@ var is_knockbacked: bool = false
 
 func _ready():
 	stats = Global.player_stats
+	print("attack:", stats.attack_damage)
 	stats.connect("health_changed", Callable(self, "_on_stats_health_changed"))
 	_on_stats_health_changed(stats.current_health, stats.max_health)
-	screen_size = get_viewport_rect().size
 	weapon_area.set_meta("owner_stats", stats)
 	add_to_group("player")
 	# connects to camera when the mode changes
@@ -38,7 +39,8 @@ func _on_stats_health_changed(current_health, max_health):
 	# Check for death
 	if current_health <= 0:
 		## Wait for death animation to finish before freeing
-		queue_free()
+		player_died.emit()
+	
 		
 func _physics_process(delta):
 	if not is_knockbacked:
@@ -138,10 +140,9 @@ func _on_knockback_timeout():
 func receive_attack(damage: int) -> void:
 	stats.decrease_health(damage)
 	
-
 func _on_hit_box_area_entered(area: Area2D) -> void:
 	if area.get_collision_layer() & Global.ENEMY_LAYER != 0:
 		var attack_target = area.get_parent()
 		if attack_target and attack_target.has_method("receive_attack"):
-			attack_target.receive_attack(stats.attack_damage)
+			attack_target.receive_attack(stats.attack_damage + stats.upgrade_level * stats.attack_increase_per_upgrade)
 			attack_target.apply_knockback(global_position)
