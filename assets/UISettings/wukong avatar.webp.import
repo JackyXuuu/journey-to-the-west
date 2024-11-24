@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dha77b0wfgd0n"
-path="res://.godot/imported/wukong avatar.webp-b80d07d82d6cd1f766af2642cfd15f06.ctex"
+path="res://.godot/imported/wukong avatar.webp-fcdc5e7b4d85ec830d20c49c87c64cca.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/wukong avatar.webp"
-dest_files=["res://.godot/imported/wukong avatar.webp-b80d07d82d6cd1f766af2642cfd15f06.ctex"]
+source_file="res://assets/UISettings/wukong avatar.webp"
+dest_files=["res://.godot/imported/wukong avatar.webp-fcdc5e7b4d85ec830d20c49c87c64cca.ctex"]
 
 [params]
 

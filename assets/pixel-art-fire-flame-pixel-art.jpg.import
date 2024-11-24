@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://brmgoolej056i"
-path="res://.godot/imported/xOWRPX.png-28d1b5de2c181c46cb41be6faba10bd4.ctex"
+uid="uid://c5ca1aos3v4b2"
+path="res://.godot/imported/pixel-art-fire-flame-pixel-art.jpg-cb5a463794025268a824145e0d331b1d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/backgrounds/xOWRPX.png"
-dest_files=["res://.godot/imported/xOWRPX.png-28d1b5de2c181c46cb41be6faba10bd4.ctex"]
+source_file="res://assets/pixel-art-fire-flame-pixel-art.jpg"
+dest_files=["res://.godot/imported/pixel-art-fire-flame-pixel-art.jpg-cb5a463794025268a824145e0d331b1d.ctex"]
 
 [params]
 

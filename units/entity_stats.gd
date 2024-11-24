@@ -14,11 +14,11 @@ signal health_changed(current_health, max_health)
 @export var knockback_force: float = 100
 @export var knockback_duration: float = 0.2
 @export var attack_cooldown: float = 1.5
-
+@export var gold_given: int = 10
 
 func _ready():
 	current_health = max_health
-	emit_signal("health_changed", current_health, max_health)
+	health_changed.emit(current_health, max_health)
 
 func decrease_health(health_amount):
 	current_health -= health_amount

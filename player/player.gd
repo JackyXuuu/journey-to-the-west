@@ -35,7 +35,11 @@ func initialize(health_bar_node):
 
 func _on_stats_health_changed(current_health, max_health):
 	health_changed.emit(current_health, max_health)
-
+	# Check for death
+	if current_health <= 0:
+		## Wait for death animation to finish before freeing
+		queue_free()
+		
 func _physics_process(delta):
 	if not is_knockbacked:
 		if not is_controllable:
@@ -133,7 +137,7 @@ func _on_knockback_timeout():
 
 func receive_attack(damage: int) -> void:
 	stats.decrease_health(damage)
-	print("Player hit!")
+	
 
 func _on_hit_box_area_entered(area: Area2D) -> void:
 	if area.get_collision_layer() & Global.ENEMY_LAYER != 0:

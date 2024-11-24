@@ -3,7 +3,7 @@ extends Control
 const LEVEL_BTN = preload("res://gui/levelSelect/level_button.tscn")
 
 @export_dir var dir_path
-@onready var grid = $MarginContainer/VBoxContainer/GridContainer
+@onready var grid = $CanvasLayer/MarginContainer/VBoxContainer/GridContainer
 
 func _ready() -> void:
 	get_levels(dir_path)

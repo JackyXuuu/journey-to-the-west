@@ -1,11 +1,28 @@
-[gd_scene load_steps=4 format=3 uid="uid://c0damj46tohyp"]
+[gd_scene load_steps=5 format=3 uid="uid://c0damj46tohyp"]
 
 [ext_resource type="Script" path="res://gui/menu.gd" id="1_xg5c1"]
 [ext_resource type="LabelSettings" uid="uid://dnjaer5ho7516" path="res://assets/UISettings/hud.tres" id="2_2pnpl"]
+[ext_resource type="Texture2D" uid="uid://dgabrr2kgui6p" path="res://assets/backgrounds/menu_screen.jpg" id="2_i8xnm"]
 [ext_resource type="Theme" uid="uid://bligd2c1rejkj" path="res://assets/UISettings/button.tres" id="2_sbkog"]
 
 [node name="Menu" type="CanvasLayer"]
 script = ExtResource("1_xg5c1")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchors_preset = -1
+anchor_left = -0.022
+anchor_top = 0.036
+anchor_right = 0.996
+anchor_bottom = 0.994
+offset_left = 0.344002
+offset_top = -23.328
+offset_right = -879.392
+offset_bottom = -483.112
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(4, 4)
+texture = ExtResource("2_i8xnm")
+expand_mode = 1
 
 [node name="Label" type="Label" parent="."]
 anchors_preset = 5
@@ -24,9 +41,26 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -84.0
-offset_top = -31.0
-offset_right = 84.0
+offset_left = -160.0
+offset_top = -116.0
+offset_right = 168.0
+offset_bottom = -58.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_vertical = 8
+theme = ExtResource("2_sbkog")
+text = "Start New Game"
+
+[node name="StartGame2" type="Button" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -160.0
+offset_top = -116.0
+offset_right = 168.0
+offset_bottom = -58.0
 grow_horizontal = 2
 grow_vertical = 0
 size_flags_vertical = 8
@@ -38,3 +72,4 @@ offset_right = 8.0
 offset_bottom = 8.0
 
 [connection signal="pressed" from="StartGame" to="." method="_on_start_game_pressed"]
+[connection signal="pressed" from="StartGame2" to="." method="_on_start_game_pressed"]

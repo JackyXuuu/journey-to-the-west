@@ -4,8 +4,8 @@
 [ext_resource type="Script" path="res://gui/hud/hud.gd" id="1_k8rej"]
 [ext_resource type="LabelSettings" uid="uid://dnjaer5ho7516" path="res://assets/UISettings/hud.tres" id="2_dhkqu"]
 [ext_resource type="PackedScene" uid="uid://day43uk5ccmnq" path="res://gui/health_bar.tscn" id="4_unow1"]
-[ext_resource type="Texture2D" uid="uid://br5ihnhyh5dq6" path="res://assets/avatar border.png" id="5_6fx5m"]
-[ext_resource type="Texture2D" uid="uid://dha77b0wfgd0n" path="res://assets/wukong avatar.webp" id="5_rxao4"]
+[ext_resource type="Texture2D" uid="uid://br5ihnhyh5dq6" path="res://assets/UISettings/avatar border.png" id="5_6fx5m"]
+[ext_resource type="Texture2D" uid="uid://dr3q0ofmbpqkq" path="res://assets/UISettings/311-3118801_swk-sun-wukong-pixel-art.png" id="6_4gbl0"]
 
 [sub_resource type="Theme" id="Theme_cupnk"]
 
@@ -21,12 +21,19 @@ script = ExtResource("1_k8rej")
 AllyMob1 = NodePath("MarginContainer/HBoxContainer/SummonAllyMob1")
 AllyMob2 = NodePath("MarginContainer/HBoxContainer/SummonAllyMob2")
 
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 25.0
+offset_top = 124.339
+offset_right = 690.0
+offset_bottom = 1069.34
+
 [node name="EssenceLabel" type="Label" parent="."]
 layout_mode = 2
-offset_left = 171.0
-offset_top = 90.2458
-offset_right = 244.0
-offset_bottom = 130.246
+offset_left = 217.0
+offset_top = 76.2075
+offset_right = 302.0
+offset_bottom = 126.208
 scale = Vector2(1.36238, 1.36238)
 text = "x 00"
 label_settings = ExtResource("2_dhkqu")
@@ -119,7 +126,7 @@ offset_top = -396.506
 offset_right = -355.427
 offset_bottom = -356.506
 scale = Vector2(21.091, 21.091)
-texture = ExtResource("5_rxao4")
+texture = ExtResource("6_4gbl0")
 expand_mode = 1
 flip_h = true
 

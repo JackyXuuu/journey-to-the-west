@@ -11,5 +11,8 @@ const GRAVITY = 800
 var player_stats: EntityStats
 var essence_per_second = 5
 
+var player_gold = 0
+var level = 0
+
 func initialize_stats(base_stats: Resource):
 	player_stats = base_stats.duplicate()

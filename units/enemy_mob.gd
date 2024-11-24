@@ -42,15 +42,12 @@ func _ready():
 	attack_timer.wait_time = 1.0  # Set attack interval (adjust as needed)
 	add_child(attack_timer)
 	attack_timer.timeout.connect(_on_attack_timer_timeout)	
-func _physics_process(delta):
-	print(velocity)
-	
+func _physics_process(delta):		
 	if state == States.DYING:
 		velocity = Vector2(0, 0) 
 		move_and_slide()  # Call this to finalize velocity
 		return # Ensure the enemy is stationary
-	if not is_on_floor():
-		velocity.y += Global.GRAVITY * delta
+			
 	elif not is_knockbacked:
 		if attack_target:
 			velocity.x = 0
@@ -155,7 +152,6 @@ func _on_detection_zone_area_exited(area: Area2D):
 		
 func receive_attack(damage: int) -> void:
 	stats.decrease_health(damage)
-	print("Enemy hit!")
 
 func _on_attack_timer_timeout():
 	if attack_target and state != States.DYING:

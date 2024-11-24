@@ -12,6 +12,7 @@ offset_left = -100.0
 offset_right = 100.0
 offset_bottom = 200.0
 grow_horizontal = 2
+size_flags_horizontal = 4
 theme = ExtResource("1_2kabm")
 script = ExtResource("1_6mjnb")
 level_path = "<null>"

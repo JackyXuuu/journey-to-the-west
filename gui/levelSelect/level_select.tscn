@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://nl7qrewiid0l"]
+[gd_scene load_steps=6 format=3 uid="uid://nl7qrewiid0l"]
 
 [ext_resource type="Script" path="res://gui/levelSelect/upgrades_button.gd" id="1_27jbw"]
 [ext_resource type="Script" path="res://gui/levelSelect/level_select.gd" id="1_rv0ot"]
 [ext_resource type="LabelSettings" uid="uid://dnjaer5ho7516" path="res://assets/UISettings/hud.tres" id="2_ibb5w"]
 [ext_resource type="Theme" uid="uid://bligd2c1rejkj" path="res://assets/UISettings/button.tres" id="3_wlahu"]
+[ext_resource type="Texture2D" uid="uid://bl4v1id01is7b" path="res://assets/backgrounds/levelselect.jpg" id="5_1bo5u"]
 
 [node name="LevelSelect" type="Control"]
 layout_mode = 3
@@ -12,33 +13,31 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(1, 1.0062)
 script = ExtResource("1_rv0ot")
 dir_path = "res://level/levelScenes"
 
-[node name="ColorRect" type="ColorRect" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 1)
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
-layout_mode = 1
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+offset_right = 728.0
+offset_bottom = 364.0
+scale = Vector2(1.58621, 1.77845)
+texture = ExtResource("5_1bo5u")
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -45.0
-offset_right = 46.0
-offset_bottom = 40.0
+offset_left = -260.0
+offset_right = 260.0
+offset_bottom = 104.0
 grow_horizontal = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MarginContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="CanvasLayer/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(25, 0)
 layout_mode = 2
 text = "Select Level
@@ -46,42 +45,43 @@ text = "Select Level
 label_settings = ExtResource("2_ibb5w")
 horizontal_alignment = 1
 
-[node name="GridContainer" type="GridContainer" parent="MarginContainer/VBoxContainer"]
+[node name="GridContainer" type="GridContainer" parent="CanvasLayer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="MenuOptions" type="MarginContainer" parent="."]
-layout_mode = 1
+[node name="MenuOptions" type="MarginContainer" parent="CanvasLayer"]
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -129.0
-offset_top = -40.0
-offset_right = 129.0
+offset_left = -318.5
+offset_top = -54.3428
+offset_right = 318.5
+offset_bottom = 3.65723
 grow_horizontal = 2
 grow_vertical = 0
+scale = Vector2(1, 1.01029)
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MenuOptions"]
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/MenuOptions"]
 layout_mode = 2
 
-[node name="SaveGameButton" type="Button" parent="MenuOptions/HBoxContainer"]
+[node name="SaveGameButton" type="Button" parent="CanvasLayer/MenuOptions/HBoxContainer"]
 layout_mode = 2
 theme = ExtResource("3_wlahu")
 text = "Save Game
 "
 
-[node name="UpgradesButton" type="Button" parent="MenuOptions/HBoxContainer"]
+[node name="UpgradesButton" type="Button" parent="CanvasLayer/MenuOptions/HBoxContainer"]
 layout_mode = 2
 theme = ExtResource("3_wlahu")
 text = "Upgrades
 "
 script = ExtResource("1_27jbw")
 
-[node name="ControlsButton" type="Button" parent="MenuOptions/HBoxContainer"]
+[node name="ControlsButton" type="Button" parent="CanvasLayer/MenuOptions/HBoxContainer"]
 layout_mode = 2
 theme = ExtResource("3_wlahu")
 text = "Controls
 "
 
-[connection signal="pressed" from="MenuOptions/HBoxContainer/UpgradesButton" to="MenuOptions/HBoxContainer/UpgradesButton" method="_on_pressed"]
+[connection signal="pressed" from="CanvasLayer/MenuOptions/HBoxContainer/UpgradesButton" to="CanvasLayer/MenuOptions/HBoxContainer/UpgradesButton" method="_on_pressed"]

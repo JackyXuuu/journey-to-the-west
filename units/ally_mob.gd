@@ -98,6 +98,7 @@ func _on_health_changed(current_health: float, max_health: float) -> void:
 		## Wait for death animation to finish before freeing
 		set_state(States.DYING)
 		velocity = Vector2(0, 0)  # Stop movement
+		queue_free()
 	
 func _on_health_bar_timer_timeout() -> void:
 	# Hide health bar after timer expires if health is full
@@ -152,7 +153,6 @@ func _on_detection_zone_area_exited(area: Area2D):
 		
 func receive_attack(damage: int) -> void:
 	stats.decrease_health(damage)
-	print("Enemy hit!")
 
 func _on_attack_timer_timeout():
 	if attack_target and state != States.DYING:

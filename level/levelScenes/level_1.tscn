@@ -1,14 +1,14 @@
-[gd_scene load_steps=9 format=4 uid="uid://dpam0xn0prbdy"]
+[gd_scene load_steps=9 format=4 uid="uid://6bsqeqdjxver"]
 
-[ext_resource type="Script" path="res://level/test_level.gd" id="1_lkkhn"]
-[ext_resource type="PackedScene" uid="uid://bcllpnc8g0ukd" path="res://units/enemy_mob3.tscn" id="2_uwvl0"]
-[ext_resource type="PackedScene" uid="uid://ydge52gon0gi" path="res://player/player.tscn" id="3_xesli"]
-[ext_resource type="Texture2D" uid="uid://b8wpe2ty1bb4y" path="res://assets/sprites/world_tileset.png" id="4_dajc7"]
-[ext_resource type="Texture2D" uid="uid://d0l55kn4w8wku" path="res://assets/backgrounds/level1background.png" id="5_itn0p"]
-[ext_resource type="PackedScene" uid="uid://dwe1dpj5ydr26" path="res://gui/hud/hud.tscn" id="6_llqte"]
+[ext_resource type="Script" path="res://level/test_level.gd" id="1_66vbp"]
+[ext_resource type="PackedScene" uid="uid://d0sxlok03prqf" path="res://units/enemy_mob1.tscn" id="2_prrwv"]
+[ext_resource type="PackedScene" uid="uid://dwe1dpj5ydr26" path="res://gui/hud/hud.tscn" id="3_048hj"]
+[ext_resource type="PackedScene" uid="uid://ydge52gon0gi" path="res://player/player.tscn" id="4_8tq0v"]
+[ext_resource type="Texture2D" uid="uid://b8wpe2ty1bb4y" path="res://assets/sprites/world_tileset.png" id="5_7r7yu"]
+[ext_resource type="Texture2D" uid="uid://brmgoolej056i" path="res://assets/backgrounds/xOWRPX.png" id="6_7i4mc"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rrnrn"]
-texture = ExtResource("4_dajc7")
+texture = ExtResource("5_7r7yu")
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 1:0/0 = 0
@@ -146,15 +146,15 @@ sources/0 = SubResource("TileSetAtlasSource_rrnrn")
 
 [node name="TestLevel" type="Node2D"]
 scale = Vector2(1.00413, 0.991191)
-script = ExtResource("1_lkkhn")
-mob_scene = ExtResource("2_uwvl0")
+script = ExtResource("1_66vbp")
+mob_scene = ExtResource("2_prrwv")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Hud" parent="CanvasLayer" instance=ExtResource("6_llqte")]
+[node name="Hud" parent="CanvasLayer" instance=ExtResource("3_048hj")]
 size_flags_vertical = 8
 
-[node name="Player" parent="." instance=ExtResource("3_xesli")]
+[node name="Player" parent="." instance=ExtResource("4_8tq0v")]
 position = Vector2(-0.995887, 0)
 
 [node name="TileMap" type="Node" parent="."]
@@ -188,10 +188,10 @@ motion_mirroring = Vector2(544, 0)
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
 position = Vector2(40, -5)
 scale = Vector2(1.00413, 0.991191)
-texture = ExtResource("5_itn0p")
+texture = ExtResource("6_7i4mc")
 
 [node name="MobSpawnLocation" type="Marker2D" parent="."]
-position = Vector2(50.7902, 80.711)
+position = Vector2(82.6586, 73.6488)
 
 [node name="BackButton" type="Button" parent="."]
 offset_left = -155.358
