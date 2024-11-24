@@ -3,7 +3,7 @@ extends Control
 const LEVEL_BTN = preload("res://gui/levelSelect/level_button.tscn")
 
 @export_dir var dir_path
-@onready var grid = $CanvasLayer/MarginContainer/VBoxContainer/GridContainer
+@onready var vbox = $CanvasLayer/MarginContainer/VBoxContainer
 
 func _ready() -> void:
 	get_levels(dir_path)
@@ -26,7 +26,7 @@ func create_level_btn(lvl_path, lvl_name):
 	btn.text = lvl_name.trim_suffix('.tscn').replace("_", " ")
 	btn.connect("pressed", Callable(self, "_on_level_button_pressed").bind(lvl_path))
 	#btn.level_path = lvl_path
-	grid.add_child(btn)
+	vbox.add_child(btn)
 
 func _on_level_button_pressed(level_path: String):
 	GameManager.load_level(level_path)
