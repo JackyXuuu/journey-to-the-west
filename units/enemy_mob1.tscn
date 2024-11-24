@@ -1,7 +1,7 @@
 [gd_scene load_steps=19 format=3 uid="uid://d0sxlok03prqf"]
 
 [ext_resource type="Script" path="res://units/enemy_mob.gd" id="1_vxwwt"]
-[ext_resource type="Resource" uid="uid://b8whi3rsvjaf1" path="res://resources/enemy_mob1.tres" id="2_3ru3p"]
+[ext_resource type="Resource" uid="uid://bcggmnh1orlvg" path="res://resources/enemy_mob1.tres" id="2_3ru3p"]
 [ext_resource type="Texture2D" uid="uid://v4xmklobd1bl" path="res://assets/enemies/basic_enemy_1_processed.png" id="4_vfuwk"]
 [ext_resource type="PackedScene" uid="uid://day43uk5ccmnq" path="res://gui/health_bar.tscn" id="11_1ubip"]
 
@@ -109,7 +109,7 @@ radius = 21.1347
 height = 54.7192
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wnxxa"]
-radius = 47.629
+radius = 166.729
 
 [node name="EnemyMob1" type="CharacterBody2D"]
 scale = Vector2(0.839825, 0.99738)
@@ -158,10 +158,11 @@ collision_mask = 2
 shape = SubResource("CircleShape2D_wnxxa")
 
 [node name="HealthBar" parent="." instance=ExtResource("11_1ubip")]
+z_index = 2
 offset_left = -11.9072
 offset_top = -23.0604
 offset_right = 388.093
-offset_bottom = -4.0104
+offset_bottom = -4.01042
 scale = Vector2(0.0627621, 0.14558)
 
 [node name="HealthBarTimer" type="Timer" parent="."]

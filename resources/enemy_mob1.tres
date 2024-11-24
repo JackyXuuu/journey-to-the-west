@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="EntityStats" load_steps=2 format=3 uid="uid://b8whi3rsvjaf1"]
+[gd_resource type="Resource" script_class="EntityStats" load_steps=2 format=3 uid="uid://bcggmnh1orlvg"]
 
 [ext_resource type="Script" path="res://units/entity_stats.gd" id="1_v3joc"]
 

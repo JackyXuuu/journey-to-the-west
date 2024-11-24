@@ -50,15 +50,15 @@ func _physics_process(delta):
 			input_dir = Input.get_axis("move_left", "move_right")
 			velocity.x = input_dir * stats.sprint_speed
 		
-		# if in the air 
-		if not is_on_floor():
-			velocity.y += Global.GRAVITY * delta
-		# if on the floor
-		elif state == States.JUMPING:
-			set_player_state(States.IDLE)
-		
-		if is_on_floor() and Input.is_action_just_pressed("jump"):
-			jump()
+		## if in the air 
+		#if not is_on_floor():
+			#velocity.y += Global.GRAVITY * delta
+		## if on the floor
+		#elif state == States.JUMPING:
+			#set_player_state(States.IDLE)
+		#
+		#if is_on_floor() and Input.is_action_just_pressed("jump"):
+			#jump()
 	
 	move_and_slide()
 	update_direction_facing()

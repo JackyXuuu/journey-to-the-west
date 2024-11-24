@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://day43uk5ccmnq" path="res://gui/health_bar.tscn" id="4_unow1"]
 [ext_resource type="Texture2D" uid="uid://br5ihnhyh5dq6" path="res://assets/UISettings/avatar border.png" id="5_6fx5m"]
 [ext_resource type="Texture2D" uid="uid://dr3q0ofmbpqkq" path="res://assets/UISettings/311-3118801_swk-sun-wukong-pixel-art.png" id="6_4gbl0"]
-[ext_resource type="Theme" uid="uid://bligd2c1rejkj" path="res://assets/UISettings/button.tres" id="7_bepox"]
+[ext_resource type="Theme" uid="uid://cn281i7bajmuj" path="res://assets/UISettings/button.tres" id="7_bepox"]
 [ext_resource type="Script" path="res://gui/hud/pause_menu.gd" id="7_ydhdn"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_oh4ae"]

@@ -1,9 +1,9 @@
-[gd_scene load_steps=8 format=4 uid="uid://6bsqeqdjxver"]
+[gd_scene load_steps=8 format=4 uid="uid://cmt8xks6ohm2d"]
 
 [ext_resource type="Script" path="res://level/test_level.gd" id="1_66vbp"]
 [ext_resource type="PackedScene" uid="uid://d0sxlok03prqf" path="res://units/enemy_mob1.tscn" id="2_prrwv"]
 [ext_resource type="PackedScene" uid="uid://dwe1dpj5ydr26" path="res://gui/hud/hud.tscn" id="3_048hj"]
-[ext_resource type="PackedScene" uid="uid://ydge52gon0gi" path="res://player/player.tscn" id="4_8tq0v"]
+[ext_resource type="PackedScene" uid="uid://ydge52gon0gi" path="res://player/Player.tscn" id="4_8tq0v"]
 [ext_resource type="Texture2D" uid="uid://b8wpe2ty1bb4y" path="res://assets/sprites/world_tileset.png" id="5_7r7yu"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rrnrn"]
@@ -143,7 +143,7 @@ texture = ExtResource("5_7r7yu")
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_rrnrn")
 
-[node name="TestLevel" type="Node2D"]
+[node name="TestLevel2" type="Node2D"]
 scale = Vector2(1.00413, 0.991191)
 script = ExtResource("1_66vbp")
 mob_scene = ExtResource("2_prrwv")
