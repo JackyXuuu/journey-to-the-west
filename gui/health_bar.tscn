@@ -24,7 +24,7 @@ shadow_offset = Vector2(0, 1)
 bg_color = Color(0.909804, 0.909804, 0.909804, 0.682353)
 
 [node name="HealthBar" type="TextureProgressBar"]
-z_index = -1
+z_index = 1
 offset_left = 154.0
 offset_top = 27.0737
 offset_right = 554.0

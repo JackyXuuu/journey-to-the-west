@@ -106,7 +106,7 @@ scale = Vector2(1.09526, 1)
 sprite_frames = SubResource("SpriteFrames_fxefx")
 animation = &"run"
 autoplay = "run"
-frame_progress = 0.132014
+frame_progress = 0.548441
 
 [node name="HitBox" type="Area2D" parent="AnimatedSprite2D"]
 scale = Vector2(0.913025, 1)

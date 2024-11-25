@@ -6,7 +6,7 @@
 script = ExtResource("1_jkcog")
 name = ""
 max_health = 15
-current_health = 15
+current_health = 10
 attack_damage = 5
 sprint_speed = 10
 jump_height = 0

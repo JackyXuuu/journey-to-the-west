@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://cxh1mc3m8ylco"]
+[gd_scene load_steps=19 format=3 uid="uid://258ds0gt7axs"]
 
 [ext_resource type="Script" path="res://units/ally_mob.gd" id="1_q2wuq"]
 [ext_resource type="Resource" uid="uid://cgjx1q705k5qi" path="res://resources/ally_mob_1.tres" id="2_pnmmy"]
@@ -121,7 +121,7 @@ metadata/_edit_group_ = true
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(1.09526, 1)
 sprite_frames = SubResource("SpriteFrames_od5dt")
-animation = &"run"
+animation = &"attack"
 autoplay = "run"
 flip_h = true
 
