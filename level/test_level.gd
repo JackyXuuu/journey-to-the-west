@@ -1,5 +1,7 @@
 extends Node2D
 @export var mob_scene: PackedScene
+@export var mob_scene2: PackedScene
+@export var mob_boss: PackedScene
 var score
 
 # Called when the node enters the scene tree for the first time.
@@ -31,6 +33,25 @@ func _on_mob_timer_timeout():
 	mob.position = mob_spawn_location
 	# Spawn the mob by adding it to the Main scene.
 	add_child(mob)
+	
+	# Create a new instance of the Mob scene.
+	var mob2 = mob_scene2.instantiate()
+	# Choose a random location on Path2D.
+	var mob2_spawn_location = $Mob2SpawnLocation.position
+	# Set the mob's position to a random location.
+	mob2.position = mob2_spawn_location
+	# Spawn the mob by adding it to the Main scene.
+	add_child(mob2)
+	
+	
+	# Create a new instance of the Mob scene.
+	var boss = mob_boss.instantiate()
+	# Choose a random location on Path2D.
+	var boss_spawn_location = $BossSpawnLocation.position
+	# Set the mob's position to a random location.
+	boss.position = boss_spawn_location
+	# Spawn the mob by adding it to the Main scene.
+	add_child(boss)
 
 func _on_hud_spawn_ally_mob(ally_mob_scene: PackedScene) -> void:
 	var mob = ally_mob_scene.instantiate()

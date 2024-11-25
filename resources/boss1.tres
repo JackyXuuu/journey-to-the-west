@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="EntityStats" load_steps=2 format=3 uid="uid://c14evmqrpyn23"]
+
+[ext_resource type="Script" path="res://units/entity_stats.gd" id="1_jkcog"]
+
+[resource]
+script = ExtResource("1_jkcog")
+name = ""
+max_health = 15
+current_health = 15
+attack_damage = 5
+sprint_speed = 10
+jump_height = 0
+summon_cost = 0
+cooldown = 0.0
+knockback_force = 100.0
+knockback_duration = 0.2
+attack_cooldown = 1.5
+gold_given = 10
+attack_increase_per_upgrade = 1
+upgrade_cost = 10
+upgrade_level = 0
