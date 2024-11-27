@@ -1,7 +1,7 @@
 [gd_scene load_steps=19 format=3 uid="uid://d0sxlok03prqf"]
 
 [ext_resource type="Script" path="res://units/enemy_mob.gd" id="1_vxwwt"]
-[ext_resource type="Resource" uid="uid://bcggmnh1orlvg" path="res://resources/enemy_mob1.tres" id="2_3ru3p"]
+[ext_resource type="Resource" uid="uid://b8whi3rsvjaf1" path="res://resources/enemy_mob1.tres" id="2_3ru3p"]
 [ext_resource type="Texture2D" uid="uid://v4xmklobd1bl" path="res://assets/enemies/basic_enemy_1_processed.png" id="4_vfuwk"]
 [ext_resource type="PackedScene" uid="uid://day43uk5ccmnq" path="res://gui/health_bar.tscn" id="11_1ubip"]
 
@@ -98,7 +98,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5l6oy"]
-size = Vector2(11.1223, 27.3997)
+size = Vector2(11.0169, 27.3997)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jkf1a"]
 radius = 13.2505
@@ -121,7 +121,7 @@ metadata/_edit_group_ = true
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(1.09526, 1)
 sprite_frames = SubResource("SpriteFrames_od5dt")
-animation = &"attack"
+animation = &"death"
 autoplay = "run"
 
 [node name="HitBox" type="Area2D" parent="AnimatedSprite2D"]
@@ -130,7 +130,7 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/HitBox"]
-position = Vector2(-15.4794, 0)
+position = Vector2(-14.2887, 0)
 scale = Vector2(1.08082, 1.24546)
 shape = SubResource("RectangleShape2D_5l6oy")
 

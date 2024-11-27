@@ -1,0 +1,41 @@
+[gd_scene load_steps=4 format=3 uid="uid://dvfnd4ccln2eb"]
+
+[ext_resource type="Script" path="res://gui/game_over.gd" id="1_d8spi"]
+[ext_resource type="Texture2D" uid="uid://dgabrr2kgui6p" path="res://assets/backgrounds/menu_screen.jpg" id="2_s3bxf"]
+[ext_resource type="LabelSettings" uid="uid://dnjaer5ho7516" path="res://assets/UISettings/hud.tres" id="3_bm5is"]
+
+[node name="GameComplete" type="CanvasLayer"]
+script = ExtResource("1_d8spi")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchors_preset = -1
+anchor_left = -0.022
+anchor_top = 0.036
+anchor_right = 0.996
+anchor_bottom = 0.994
+offset_left = 0.344002
+offset_top = -23.328
+offset_right = -879.392
+offset_bottom = -483.112
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(4, 4)
+texture = ExtResource("2_s3bxf")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -92.0
+offset_top = -215.0
+offset_right = 84.0
+offset_bottom = -165.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 80
+text = "You have Completed the Game
+"
+label_settings = ExtResource("3_bm5is")

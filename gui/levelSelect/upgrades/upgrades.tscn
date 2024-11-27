@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://cmkmhf37koh04"]
+[gd_scene load_steps=6 format=3 uid="uid://cmkmhf37koh04"]
 
 [ext_resource type="Script" path="res://gui/levelSelect/upgrades/upgrades.gd" id="1_mdgfr"]
 [ext_resource type="Theme" uid="uid://bligd2c1rejkj" path="res://assets/UISettings/button.tres" id="2_1suh7"]
 [ext_resource type="Texture2D" uid="uid://nrj20hwgbjhf" path="res://assets/wukong16bit/atk wk_sprite_1.png" id="3_ayjl1"]
+[ext_resource type="Texture2D" uid="uid://ct8ogexr4jnm7" path="res://assets/ally/Screenshot 2024-11-25 at 10.21.23 AM.png" id="4_a0xlm"]
 [ext_resource type="LabelSettings" uid="uid://dnjaer5ho7516" path="res://assets/UISettings/hud.tres" id="4_sllhx"]
 
 [node name="Upgrades" type="Control"]
@@ -29,37 +30,41 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.034586, 0.0350233, 0, 1)
 
-[node name="HBoxContainer" type="HBoxContainer" parent="ColorRect"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -174.0
-offset_top = -76.0
-offset_right = 174.0
-offset_bottom = 76.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="UpgradeWukong" type="VBoxContainer" parent="ColorRect/HBoxContainer"]
+[node name="UpgradeWukong" type="VBoxContainer" parent="ColorRect"]
 layout_mode = 2
+offset_left = 311.0
+offset_top = 289.0
+offset_right = 459.0
+offset_bottom = 405.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
 
-[node name="TextureRect" type="TextureRect" parent="ColorRect/HBoxContainer/UpgradeWukong"]
-layout_mode = 2
-texture = ExtResource("3_ayjl1")
-stretch_mode = 3
-
-[node name="ProgressBar" type="ProgressBar" parent="ColorRect/HBoxContainer/UpgradeWukong"]
+[node name="ProgressBar" type="ProgressBar" parent="ColorRect/UpgradeWukong"]
 layout_mode = 2
 theme = ExtResource("2_1suh7")
 
-[node name="UpgradeWukongAttack" type="Button" parent="ColorRect/HBoxContainer/UpgradeWukong"]
+[node name="UpgradeWukong" type="Button" parent="ColorRect/UpgradeWukong"]
 layout_mode = 2
 theme = ExtResource("2_1suh7")
-text = "Upgrade Wukong
-"
+text = "Upgrade"
+
+[node name="UpgradeShaseng" type="VBoxContainer" parent="ColorRect"]
+layout_mode = 2
+offset_left = 686.0
+offset_top = 295.0
+offset_right = 834.0
+offset_bottom = 411.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="ProgressBar" type="ProgressBar" parent="ColorRect/UpgradeShaseng"]
+layout_mode = 2
+theme = ExtResource("2_1suh7")
+
+[node name="UpgradeShaseng" type="Button" parent="ColorRect/UpgradeShaseng"]
+layout_mode = 2
+theme = ExtResource("2_1suh7")
+text = "Upgrade"
 
 [node name="BackButton" type="Button" parent="ColorRect"]
 layout_mode = 0
@@ -70,6 +75,26 @@ offset_bottom = 59.0
 theme = ExtResource("2_1suh7")
 text = "Back
 "
+
+[node name="TextureRect2" type="TextureRect" parent="ColorRect"]
+layout_mode = 2
+offset_left = 723.0
+offset_top = 192.0
+offset_right = 823.0
+offset_bottom = 292.0
+theme = ExtResource("2_1suh7")
+texture = ExtResource("4_a0xlm")
+expand_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="ColorRect"]
+layout_mode = 2
+offset_left = 350.0
+offset_top = 195.0
+offset_right = 450.0
+offset_bottom = 295.0
+size_flags_horizontal = 4
+texture = ExtResource("3_ayjl1")
+expand_mode = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 1
@@ -92,5 +117,6 @@ text = "Gold
 "
 label_settings = ExtResource("4_sllhx")
 
-[connection signal="pressed" from="ColorRect/HBoxContainer/UpgradeWukong/UpgradeWukongAttack" to="." method="_on_upgrade_wukong_attack_pressed"]
+[connection signal="pressed" from="ColorRect/UpgradeWukong/UpgradeWukong" to="." method="_on_upgrade_wukong_attack_pressed"]
+[connection signal="pressed" from="ColorRect/UpgradeShaseng/UpgradeShaseng" to="." method="_on_upgrade_shaseng_pressed"]
 [connection signal="pressed" from="ColorRect/BackButton" to="." method="_on_back_button_pressed"]

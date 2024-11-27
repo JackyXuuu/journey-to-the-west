@@ -1,7 +1,7 @@
-[gd_scene load_steps=19 format=3 uid="uid://ben4wb7f1p2ei"]
+[gd_scene load_steps=19 format=3 uid="uid://bcllpnc8g0ukd"]
 
 [ext_resource type="Script" path="res://units/enemy_mob.gd" id="1_nxrmn"]
-[ext_resource type="Resource" uid="uid://bcggmnh1orlvg" path="res://resources/enemy_mob1.tres" id="2_b1yk1"]
+[ext_resource type="Resource" uid="uid://b8whi3rsvjaf1" path="res://resources/enemy_mob1.tres" id="2_b1yk1"]
 [ext_resource type="Texture2D" uid="uid://7euy1lvrouad" path="res://assets/enemies/basic_enemy_2_processed.png" id="3_lb3m8"]
 [ext_resource type="PackedScene" uid="uid://day43uk5ccmnq" path="res://gui/health_bar.tscn" id="4_w6m2b"]
 
@@ -87,7 +87,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5l6oy"]
-size = Vector2(11.1223, 27.3997)
+size = Vector2(11.5677, 27.3997)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jkf1a"]
 radius = 13.2505
@@ -110,8 +110,10 @@ metadata/_edit_group_ = true
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(1.09526, 1)
 sprite_frames = SubResource("SpriteFrames_fxefx")
-animation = &"death"
+animation = &"attack"
 autoplay = "run"
+frame = 3
+frame_progress = 1.0
 
 [node name="HitBox" type="Area2D" parent="AnimatedSprite2D"]
 scale = Vector2(0.913025, 1)
@@ -119,7 +121,7 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/HitBox"]
-position = Vector2(-15.4794, 0)
+position = Vector2(-15.1817, 0)
 scale = Vector2(1.08082, 1.24546)
 shape = SubResource("RectangleShape2D_5l6oy")
 
@@ -147,6 +149,7 @@ collision_mask = 2
 shape = SubResource("CircleShape2D_wnxxa")
 
 [node name="HealthBar" parent="." instance=ExtResource("4_w6m2b")]
+z_index = -1
 offset_left = -11.9072
 offset_top = -23.0604
 offset_right = 388.093

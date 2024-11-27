@@ -6,7 +6,7 @@
 script = ExtResource("1_piqri")
 name = ""
 max_health = 20
-current_health = 18
+current_health = 0
 attack_damage = 1
 sprint_speed = 100
 jump_height = 250
@@ -16,3 +16,6 @@ knockback_force = 80.0
 knockback_duration = 0.3
 attack_cooldown = 1.5
 gold_given = 10
+attack_increase_per_upgrade = 2
+upgrade_cost = 40
+upgrade_level = 0

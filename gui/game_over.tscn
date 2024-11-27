@@ -55,6 +55,7 @@ grow_horizontal = 2
 grow_vertical = 0
 size_flags_vertical = 8
 theme = ExtResource("4_oc67k")
-text = "Continue Game"
+text = "Try Again
+"
 
 [connection signal="pressed" from="ContinueGame" to="." method="_on_continue_game_pressed"]

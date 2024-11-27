@@ -38,6 +38,7 @@ func _on_stats_health_changed(current_health, max_health):
 	health_changed.emit(current_health, max_health)
 	# Check for death
 	if current_health <= 0:
+		print("dead")
 		## Wait for death animation to finish before freeing
 		player_died.emit()
 	
@@ -53,10 +54,10 @@ func _physics_process(delta):
 		## if in the air 
 		#if not is_on_floor():
 			#velocity.y += Global.GRAVITY * delta
-		## if on the floor
+		### if on the floor
 		#elif state == States.JUMPING:
 			#set_player_state(States.IDLE)
-		#
+		##
 		#if is_on_floor() and Input.is_action_just_pressed("jump"):
 			#jump()
 	
@@ -139,6 +140,7 @@ func _on_knockback_timeout():
 
 func receive_attack(damage: int) -> void:
 	stats.decrease_health(damage)
+	print("hello")
 	
 func _on_hit_box_area_entered(area: Area2D) -> void:
 	if area.get_collision_layer() & Global.ENEMY_LAYER != 0:

@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="EntityStats" load_steps=2 format=3 uid="uid://bcggmnh1orlvg"]
+[gd_resource type="Resource" script_class="EntityStats" load_steps=2 format=3 uid="uid://b8whi3rsvjaf1"]
 
 [ext_resource type="Script" path="res://units/entity_stats.gd" id="1_v3joc"]
 
@@ -15,7 +15,7 @@ cooldown = 0.0
 knockback_force = 100.0
 knockback_duration = 0.2
 attack_cooldown = 1.5
-gold_given = 10
+gold_given = 5
 attack_increase_per_upgrade = 1
 upgrade_cost = 10
 upgrade_level = 0

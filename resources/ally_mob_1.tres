@@ -16,3 +16,6 @@ knockback_force = 100.0
 knockback_duration = 0.2
 attack_cooldown = 1.5
 gold_given = 10
+attack_increase_per_upgrade = 1
+upgrade_cost = 10
+upgrade_level = 1

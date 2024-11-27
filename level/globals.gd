@@ -12,7 +12,8 @@ const ESSENCE_CAP = 100
 const STARTING_GOLD = 0 
 const STARTING_LEVEL = 0
 var player_stats: EntityStats
-var essence_per_second = 5
+var ally_mob1_stats: EntityStats
+var essence_per_second = 1
 @onready var base_player_stats = preload("res://resources/player_stats.tres")
 @onready var ally1_stats = preload("res://resources/ally_mob_1.tres")
 @onready var save_info = preload("res://resources/save_info.tres")
@@ -20,16 +21,16 @@ var essence_per_second = 5
 
 func initialize_stats():
 	player_stats = base_player_stats.duplicate()
+	ally_mob1_stats = ally1_stats.duplicate()
 
 func reload_stats():
 	player_stats.current_health = player_stats.max_health	
 	
 func new_game():
 	save_info.gold = 0
-	save_info.level = 0
+	save_info.level = 1
 	ally1_stats.upgrade_level = 0
 	player_stats.upgrade_level = 0
-	pass
 
 func increase_gold(gold):
 	save_info.gold += gold
@@ -39,10 +40,7 @@ func get_gold():
 
 func save_game():
 	ResourceSaver.save(save_info, "res://resources/save_info.tres")
-	ResourceSaver.save(ally1_stats, "res://resources/ally_mob_1.tres")
+	ResourceSaver.save(ally_mob1_stats, "res://resources/ally_mob_1.tres")
 	ResourceSaver.save(player_stats, "res://resources/player_stats.tres")
-	print("game saved")
-
-
 
 	
